@@ -26,5 +26,12 @@ namespace EventHubMVC.Controllers
 
             return View();
         }
+
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Login";
+
+            return View();
+        }
     }
 }

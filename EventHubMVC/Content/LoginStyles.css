@@ -1,0 +1,130 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:  'Poppins', sans-serif;
+}
+
+body {
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.login-header{
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 25px;
+    margin-top: 10vh;
+}
+
+.login-header > p{
+    text-align: center;
+}
+
+/*Login modal */
+.login-modal {
+    background-color: rgb(248, 248, 248);
+    width: 600px;
+    height: 70vh;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-modal-container{
+    padding: 40px;
+}
+
+.login-modal-header{
+    color: black;
+    letter-spacing: 3px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 25px;  
+}
+
+.form-group{
+    padding: 5px;
+}
+
+.inputUsername{
+    display: flex;
+}
+
+.inputUsername > input{
+    flex: 1;
+}
+
+.inputPassword{
+    display: flex;
+}
+
+.inputPassword > input{
+    flex: 1;
+}
+
+input{
+    padding: 12px;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    margin-top: 10px;
+}
+
+input:focus {
+    border: 2px solid ;
+    border-color: dodgerblue;
+}
+
+.inputChecks{
+    margin-top: 18px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.anchor{
+    padding-top:7px;
+}
+
+a{
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+.submit-container{
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+
+.submitButton{
+    flex: 1;
+    padding: 10px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.submitButton:active{
+    box-shadow: 0 4px 8px 0 rgba(0,90,156, 0.2), 0 6px 20px 0 rgba(0,90,156, 0.19);
+}
+
+.login-modal-footer{
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+}
