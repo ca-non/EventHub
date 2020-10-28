@@ -10,26 +10,28 @@ namespace EventHubMVC.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "EventHub";
+            
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Title = "EventHub - About";
 
             return View();
         }
 
         public ActionResult Login()
         {
-            ViewBag.Title = "Login";
+            ViewBag.Title = "EventHub - Login";
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            ViewBag.Title = "EventHub - Register";
 
             return View();
         }

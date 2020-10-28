@@ -1,7 +1,49 @@
 ﻿@{
     ViewBag.Title = "About";
+    Layout = null;
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Images/favicon.ico">
+    <link rel="stylesheet" href="~/Content/AboutStyles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h4>@Html.ActionLink("EventHub", "Index", "Home")</h4>
+            <form>
+                <input id="searchBox" name="searchBox" placeholder="Search events">
+            </form>
+        </div>
+        <ul class="nav-links">
+            <li>@Html.ActionLink("About", "About", "Home")</a></li>
+            <li>@Html.ActionLink("SignUp", "Register", "Home")</a></li>
+            <li>@Html.ActionLink("Login", "Login", "Home")</a></li>
+        </ul>
+    </nav>
+    <div class="about-container">
+        <h4>About us</h4>
+        <p>EventHub is a local self-service ticketing platform for live experiences that allows anyone to create, share, find and attend events that fuel their passions and enrich their lives. 
+        From music festivals, marathons, conferences, community rallies, and fundraisers, to gaming competitions and air guitar contests. Our mission is to bring the world together through live experiences.</p>
+    </div>
+    <footer class="footerTag">
+        <div>
+            <p>&copy;Copyright 2020 by EventHub. All Rights Reserved.</p>
+            <div class="logo-footer">
+                <h4>The Nav</h4>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

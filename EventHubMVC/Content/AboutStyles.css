@@ -1,0 +1,135 @@
+﻿*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: white;
+    padding-left: 5%;
+}
+
+.logo {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+    .logo a {
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 20px;
+    }
+
+.logo form {
+    margin-left: 100px;
+}
+
+#searchBox {
+    padding: 12px;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    width: 300px;
+    background-color: rgb(248, 248, 248);
+}
+
+#searchBox:focus {
+    border: 2px solid;
+    border-color: dodgerblue;
+}
+
+.onSearchClick {
+    border: 2px solid;
+    border-color: green;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/*content*/
+.about-container {
+    padding: 20px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 20vh;
+    text-align: center;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 0 4px 8px 0 rgba(0,90,156, 0.2), 0 6px 20px 0 rgba(0,90,156, 0.19);
+    border-radius: 8px;
+}
+
+.about-container h4 {
+    letter-spacing: 2px;
+    margin-bottom: 5vh;
+}
+
+.about-container p {
+    letter-spacing: 1px;
+}
+
+    /* Footer */
+    .footerTag {
+    margin-top: 50px;
+    padding: 25px;
+    padding-top: 100px;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+    .footerTag p {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+.logo-footer {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+}
