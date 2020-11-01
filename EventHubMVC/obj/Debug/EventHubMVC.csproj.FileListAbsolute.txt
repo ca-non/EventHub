@@ -89,3 +89,5 @@ C:\Users\viraj\source\Repos\EventHub\EventHubMVC\obj\Debug\EventHubMVC.csproj.Co
 C:\Users\viraj\source\Repos\EventHub\EventHubMVC\obj\Debug\EventHubMVC.csproj.CopyComplete
 C:\Users\viraj\source\Repos\EventHub\EventHubMVC\obj\Debug\EventHubMVC.dll
 C:\Users\viraj\source\Repos\EventHub\EventHubMVC\obj\Debug\EventHubMVC.pdb
+C:\Users\viraj\source\Repos\EventHub\EventHubMVC\bin\UserLayer.dll
+C:\Users\viraj\source\Repos\EventHub\EventHubMVC\bin\UserLayer.pdb

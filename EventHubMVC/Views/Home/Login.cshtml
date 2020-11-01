@@ -24,7 +24,7 @@
             <div class="login-modal-container">
                 <p class="login-modal-header">Log In to Your Account</p>
                 <div class="form-group">
-                    <form>
+                    <form action="/Home/Login" method="post">
                         <div class="inputUsername">
                             <input type="text" placeholder="Email or username" name="username">
                         </div>
@@ -46,7 +46,7 @@
                     </form>
                 </div>
                 <div class="login-modal-footer">
-                    <p>Need an account? <a href="#">Sign up</a></p>
+                    <p>Need an account? @Html.ActionLink("Sign Up", "Register", "Home")</p>
                 </div>
             </div>
         </div>
