@@ -9,8 +9,6 @@ namespace UserLayer.ViewModels
 {
     public class RegisterViewModel
     {
-        public int UserId { get; set; }
-
         [RegularExpression(@"^\w+$", ErrorMessage = "Username can contain only letters, numbers and _ ")]
         [Required(ErrorMessage="Name is required son")]
         [StringLength(200, ErrorMessage ="Username is too long")]

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model UserLayer.ViewModels.LoginUserModel
+@{
     Layout = null;
 }
 
@@ -33,14 +34,16 @@
                 <div class="form-group">
                     <form action="/Home/Login" method="post">
                         <div class="inputUsername">
-                            <input type="text" placeholder="Email or username" name="username">
+                            @Html.EditorFor(model => model.UsernameEmail, new { HtmlAttributes = new { @placeholder = "Username or Email" } })
                         </div>
+                        <div>@Html.ValidationMessageFor(model => model.UsernameEmail, " ", new { @class = "text-danger" })</div>
                         <div class="inputPassword">
-                            <input type="password" placeholder="Password">
+                            @Html.EditorFor(model => model.Passwd, new { HtmlAttributes = new { @placeholder = "Password" } })
+                        <div>@Html.ValidationMessageFor(model => model.Passwd, " ", new { @class = "text-danger" })</div>
                         </div>
                         <div class="inputChecks">
                             <div class="checkBox">
-                                <input type="checkbox" name="remember">
+                                @Html.CheckBoxFor(model => model.RememberMe)
                                 <label for="remember">Remember me</label>
                             </div>
                             <div class="anchor">
