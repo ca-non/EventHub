@@ -17,6 +17,13 @@
 
 <body>
     <div class="login-container">
+        @if (ViewBag.Flash == "Joined")
+        {
+            <div class="flash-banner">
+                <p id="fb-1">Thank you for joining with us</p>
+                <p id="fb-2"> Please login to continue </p>
+            </div>
+        }
         <div class="login-header">
             <p>EventHub</p>
         </div>

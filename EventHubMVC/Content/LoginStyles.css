@@ -14,6 +14,19 @@ body {
     justify-content: center;
 }
 
+
+.flash-banner {
+    margin-top: 5vh;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#fb-1 {
+    font-weight: 900;
+    font-size: 26px;
+    color: #ff1e20;
+}
+
 .login-header{
     color: black;
     text-transform: uppercase;
@@ -21,7 +34,7 @@ body {
     font-size: 25px;
     font-weight: 900;
     padding: 25px;
-    margin-top: 10vh;
+
 }
 
 .login-header > p{

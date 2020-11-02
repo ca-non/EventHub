@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UserLayer;
+using UserLayer.ViewModels;
 
 namespace EventHubMVC.Controllers
 {
@@ -24,9 +25,10 @@ namespace EventHubMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string flash)
         {
             ViewBag.Title = "EventHub - Login";
+            ViewBag.Flash = flash;
 
             return View();
         }
@@ -45,27 +47,28 @@ namespace EventHubMVC.Controllers
         {
             ViewBag.Title = "EventHub - Register";
 
+            RegisterViewModel newUser = new RegisterViewModel();
+            newUser.UserName = formCollection["UserName"];
+            newUser.Email = formCollection["Email"];
+            newUser.ConfirmEmail = formCollection["ConfirmEmail"];
+            newUser.Passwd = formCollection["Passwd"];
+            newUser.ConfirmPasswd = formCollection["ConfirmPasswd"];
+
             if (ModelState.IsValid)
             {
-                
-                User newUser = new User();
-                newUser.UserName = formCollection["username"];
-                newUser.Email = formCollection["email"];
-                newUser.Passwd = formCollection["password"];
-
                 UserBusinessLayer userBusinessLayer = new UserBusinessLayer();
 
                 if (!userBusinessLayer.addNewUser(newUser, ModelState))
                 {
-                    return View();
+                    return View(newUser);
                 }
                 else
                 {
-                    return RedirectToAction("Register");
+                    return RedirectToAction("Login", new { flash = "Joined" });
                 }
                 
             }
-            return View();
+            return View(newUser);
         }
     }
 }
