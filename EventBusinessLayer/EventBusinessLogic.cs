@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventBusinessLayer
 {
-    public class Class1
+    public class EventBusinessLogic
     {
     }
 }
