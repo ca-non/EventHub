@@ -155,26 +155,58 @@ namespace UserBusinessLayer
             {
                 string Email = "";
                 string Username = "";
+                string connectionString = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+                int count = 0;
 
-                if(currentUser.UsernameEmail.Contains("@"))
+                if (currentUser.UsernameEmail.Contains("@"))
                 {
                     Email = currentUser.UsernameEmail;
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        SqlCommand cmd = new SqlCommand("spCheckUserForEmailr", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if(count == 1)
+                    {
+                        // check for the correspoding password
+                        // if for password error
+                    }
+                    else
+                    {
+                        // flag to flase
+                        // add model error - username or password is incorrect
+                    }
                 }
                 else
                 {
                     Username = currentUser.UsernameEmail;
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        SqlCommand cmd = new SqlCommand("spCheckUserUsername", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    if (count == 1)
+                    {
+                        // check for the correspoding password
+                        // if for password error
+                    }
+                    else
+                    {
+                        // flag to flase
+                        // add model error - username or password is incorrect
+                    }
                 }
 
-                string connectionString = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
-
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    SqlCommand cmd = new SqlCommand("spAddUser", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
             }
 
 
