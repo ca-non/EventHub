@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using UserLayer;
-using UserLayer.ViewModels;
+using UserBusinessLayer;
+using UserBusinessLayer.ViewModels;
 
 namespace EventHubMVC.Controllers
 {
@@ -25,13 +25,35 @@ namespace EventHubMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login(string flash)
+        [ActionName("Login")]
+        public ActionResult Login_get(string flash)
         {
             ViewBag.Title = "EventHub - Login";
             ViewBag.Flash = flash;
 
             return View();
         }
+
+        [HttpPost]
+        [ActionName("Login")]
+        public ActionResult Login_post(string flash, FormCollection formCollection)
+        {
+            ViewBag.Title = "EventHub - Login";
+            ViewBag.Flash = flash;
+
+            LoginViewModel currentUser = new LoginViewModel();
+            currentUser.UsernameEmail = formCollection["UsernameEmail"];
+            currentUser.Passwd = formCollection["Passwd"];
+            currentUser.RememberMe = Convert.ToBoolean(formCollection["RememberMe"].Split(',')[0]);
+
+            if(ModelState.IsValid)
+            {
+
+            }
+
+            return View();
+        }
+
 
         [HttpGet]
         public ActionResult Register()
@@ -56,9 +78,9 @@ namespace EventHubMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                UserBusinessLayer userBusinessLayer = new UserBusinessLayer();
+                UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
-                if (!userBusinessLayer.addNewUser(newUser, ModelState))
+                if (!userBusinessLogic.addNewUser(newUser, ModelState))
                 {
                     return View(newUser);
                 }

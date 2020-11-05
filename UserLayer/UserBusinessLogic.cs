@@ -8,11 +8,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using System.Text.RegularExpressions;
-using UserLayer.ViewModels;
+using UserBusinessLayer.ViewModels;
 
-namespace UserLayer
+namespace UserBusinessLayer
 {
-    public class UserBusinessLayer
+    public class UserBusinessLogic
     {
         public bool addNewUser(RegisterViewModel newUser, ModelStateDictionary mState)
         {
@@ -124,6 +124,53 @@ namespace UserLayer
                     paramPassword.ParameterName = "@Passwd";
                     paramPassword.Value = newUser.Passwd;
                     cmd.Parameters.Add(paramPassword);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+
+            return modelStateFlag;
+        }
+
+        public bool loginUser(LoginViewModel currentUser, ModelStateDictionary mState)
+        {
+            bool modelStateFlag = true;
+
+            if (String.IsNullOrEmpty(currentUser.UsernameEmail))
+            {
+                mState.AddModelError("UsernameEmail", "Please enter username or email");
+                modelStateFlag = false;
+            }
+
+
+            if (String.IsNullOrEmpty(currentUser.Passwd))
+            {
+                mState.AddModelError("Passwd", "Password cannot be empty");
+                modelStateFlag = false;
+            }
+
+            if (modelStateFlag)
+            {
+                string Email = "";
+                string Username = "";
+
+                if(currentUser.UsernameEmail.Contains("@"))
+                {
+                    Email = currentUser.UsernameEmail;
+                }
+                else
+                {
+                    Username = currentUser.UsernameEmail;
+                }
+
+                string connectionString = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddUser", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     con.Open();
                     cmd.ExecuteNonQuery();

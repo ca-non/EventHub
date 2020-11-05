@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace UserLayer.ViewModels
+namespace UserBusinessLayer.ViewModels
 {
     public class RegisterViewModel
     {

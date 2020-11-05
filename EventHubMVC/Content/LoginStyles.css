@@ -19,12 +19,15 @@ body {
     margin-top: 5vh;
     text-align: center;
     letter-spacing: 1px;
+    background-color: #cce5ff;
+    padding: 3px;
+    border-radius: 8px;
 }
 
 #fb-1 {
     font-weight: 900;
     font-size: 26px;
-    color: #ff1e20;
+    color: dodgerblue;
 }
 
 .login-header{

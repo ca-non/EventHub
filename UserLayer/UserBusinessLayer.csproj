@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserBusinessLayer.cs" />
+    <Compile Include="UserBusinessLogic.cs" />
     <Compile Include="ViewModels\LoginUserModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>

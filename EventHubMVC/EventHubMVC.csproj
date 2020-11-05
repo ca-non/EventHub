@@ -303,9 +303,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserLayer\UserLayer.csproj">
+    <ProjectReference Include="..\UserLayer\UserBusinessLayer.csproj">
       <Project>{333a859a-b9bb-46fe-bf44-1b0917100832}</Project>
-      <Name>UserLayer</Name>
+      <Name>UserBusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
