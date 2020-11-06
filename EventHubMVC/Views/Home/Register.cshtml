@@ -31,31 +31,34 @@
                         </div>
                         <div> @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })</div>
                         <div class="inputEmail inValues">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email" } })                          
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email" } })
                         </div>
                         <div> @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</div>
                         <div class="inputEmail inValues">
-                            @Html.EditorFor(model => model.ConfirmEmail, new { htmlAttributes = new { @placeholder = "Confirm Email" } })                            
+                            @Html.EditorFor(model => model.ConfirmEmail, new { htmlAttributes = new { @placeholder = "Confirm Email" } })
                         </div>
                         <div>@Html.ValidationMessageFor(model => model.ConfirmEmail, "", new { @class = "text-danger" })</div>
                         <div class="inputPassword inValues">
                             @Html.EditorFor(model => model.Passwd, new { htmlAttributes = new { placeholder = "Password" } })
                         </div>
-                        <div>@Html.ValidationMessageFor(model => model.Passwd, "", new {@class="text-danger" })</div>
+                        <div>@Html.ValidationMessageFor(model => model.Passwd, "", new { @class = "text-danger" })</div>
                         <div class="inputPassword inValues">
-                            @Html.EditorFor(model => model.ConfirmPasswd, new { htmlAttributes = new { placeholder = "Confirm Password" } })                           
+                            @Html.EditorFor(model => model.ConfirmPasswd, new { htmlAttributes = new { placeholder = "Confirm Password" } })
                         </div>
                         <div>@Html.ValidationMessageFor(model => model.ConfirmPasswd, "", new { @class = "text-danger" })</div>
                         <div class="submit-container">
                             <button type="submit" class="submitButton">Submit</button>
                         </div>
+                        <div class="register-modal-footer">
+                            <p>Already have an account? @Html.ActionLink("Sign In", "Login", "Home")</p>
+                        </div>
                     </form>
+
                 </div>
-                <div class="register-modal-footer">
-                    <p>Already have an account? @Html.ActionLink("Sign In", "Login", "Home")</p>
-                </div>
+
             </div>
         </div>
+        <p id="back-Home">@Html.ActionLink("or back Home", "Index", "Home")</p>
     </div>
 
 

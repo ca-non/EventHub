@@ -14,6 +14,22 @@ nav {
     padding-left: 5%;
 }
 
+#create-Button:hover {
+    background-color: #4BA6FF;
+}
+
+#create-Button {
+    background-color: #cce5ff;
+    padding: 5px;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#create-Button > a {
+    padding: 5px;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -25,7 +41,7 @@ nav {
     color: black;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-size: 20px;
+    font-size: 26px;
 }
 
 .logo form{
@@ -56,9 +72,12 @@ nav {
     width: 35%;
 }
 
-.nav-links li{
-    list-style: none;
-}
+    .nav-links li {
+        list-style: none;
+        padding: 5px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
 
 .nav-links a{
     color: black;
@@ -82,23 +101,26 @@ nav {
     position:relative;
 }
 
-#jumbotronButton{
+#jumbotronButton {
     position: absolute;
     bottom: 40%;
     left: 15%;
-
     padding: 20px;
     padding-left: 25px;
     padding-right: 25px;
     border-radius: 30px;
-
     font-weight: 900;
-    background-color: coral;
+    font-size: 14px;
+    background-color: #50BFE6;
     letter-spacing: 1px;
     outline: none;
     border: 0;
     cursor: pointer;
 }
+
+    #jumbotronButton:hover {
+        background-color: #4BA6FF;
+    }
 
 #jumbotronButton:active{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);

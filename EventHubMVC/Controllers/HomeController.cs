@@ -48,7 +48,27 @@ namespace EventHubMVC.Controllers
 
             if(ModelState.IsValid)
             {
+                UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
+                if (!userBusinessLogic.loginUser(currentUser, ModelState))
+                {
+                    return View(currentUser);
+                }
+                else
+                {
+                    if(currentUser.UsernameEmail.Contains("@"))
+                    {
+                        Session["Email"] = currentUser.UsernameEmail;
+                        Session["Username"] = false;
+                    }
+                    else
+                    {
+                        Session["Username"] = currentUser.UsernameEmail;
+                        Session["Email"] = false;
+                    }
+                    
+                    return RedirectToAction("Index");
+                }
             }
 
             return View();
@@ -91,6 +111,24 @@ namespace EventHubMVC.Controllers
                 
             }
             return View(newUser);
+        }
+
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            ViewBag.Title = "EventHub - Logout";
+
+            Session.Clear();
+            Session.Abandon();
+
+            return RedirectToAction("Login", new { flash = "LoggedOut" });
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }

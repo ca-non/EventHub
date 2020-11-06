@@ -158,6 +158,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Aboutbackground.jpg" />
     <Content Include="Images\art.jpg" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\jumbo.jpg" />

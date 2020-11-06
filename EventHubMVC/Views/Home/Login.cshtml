@@ -21,8 +21,14 @@
         @if (ViewBag.Flash == "Joined")
         {
             <div class="flash-banner">
-                <p id="fb-1">Thank you for joining with us</p>
+                <p id="fb-1">Thank you for joining with us!</p>
                 <p id="fb-2"> Please login to continue </p>
+            </div>
+        }
+        else if (ViewBag.Flash == "LoggedOut")
+        {
+            <div class="flash-banner">
+                <p id="fb-3">You are now logged out.</p>
             </div>
         }
         <div class="login-header">
@@ -33,14 +39,15 @@
                 <p class="login-modal-header">Log In to Your Account</p>
                 <div class="form-group">
                     <form action="/Home/Login" method="post">
+                        <div>@Html.ValidationMessageFor(model => model.LoginValidator, "", new { @class = "text-danger" })</div>
                         <div class="inputUsername">
                             @Html.EditorFor(model => model.UsernameEmail, new { HtmlAttributes = new { @placeholder = "Username or Email" } })
                         </div>
-                        <div>@Html.ValidationMessageFor(model => model.UsernameEmail, " ", new { @class = "text-danger" })</div>
+                        <div>@Html.ValidationMessageFor(model => model.UsernameEmail, "", new { @class = "text-danger" })</div>
                         <div class="inputPassword">
-                            @Html.EditorFor(model => model.Passwd, new { HtmlAttributes = new { @placeholder = "Password" } })
-                        <div>@Html.ValidationMessageFor(model => model.Passwd, " ", new { @class = "text-danger" })</div>
+                            @Html.PasswordFor(model => model.Passwd, new { @placeholder = "Password" })
                         </div>
+                        <div>@Html.ValidationMessageFor(model => model.Passwd, "", new { @class = "text-danger" })</div>
                         <div class="inputChecks">
                             <div class="checkBox">
                                 @Html.CheckBoxFor(model => model.RememberMe)
@@ -60,6 +67,7 @@
                 </div>
             </div>
         </div>
+        <p id="back-Home">@Html.ActionLink("or back Home", "Index", "Home")</p>
     </div>
 
 </body>

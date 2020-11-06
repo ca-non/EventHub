@@ -14,6 +14,12 @@ body {
     justify-content: center;
 }
 
+.text-danger {
+    color: red;
+    font-size: 12px;
+    padding: 10px;
+    padding-left: 0;
+}
 
 .flash-banner {
     margin-top: 5vh;
@@ -30,14 +36,33 @@ body {
     color: dodgerblue;
 }
 
-.login-header{
+#fb-3 {
+    font-weight: 400;
+    font-size: 20px;
+    color: dodgerblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#back-Home {
+    padding-top: 15px;
+    text-align: center;
+}
+
+#back-Home > a {
+    color: black;
+    text-decoration: underline;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.login-header {
     color: black;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 25px;
     font-weight: 900;
     padding: 25px;
-
+    padding-top: 50px;
 }
 
 .login-header > p{

@@ -153,57 +153,124 @@ namespace UserBusinessLayer
 
             if (modelStateFlag)
             {
-                string Email = "";
-                string Username = "";
+                string Email = currentUser.UsernameEmail;
+                string Username = currentUser.UsernameEmail;
                 string connectionString = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
                 int count = 0;
 
                 if (currentUser.UsernameEmail.Contains("@"))
                 {
-                    Email = currentUser.UsernameEmail;
-
                     using (SqlConnection con = new SqlConnection(connectionString))
                     {
-                        SqlCommand cmd = new SqlCommand("spCheckUserForEmailr", con);
+                        SqlCommand cmd = new SqlCommand("spCheckUserForEmail", con);
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
+                        cmd.Parameters.AddWithValue("@Email", Email);
 
-                    if(count == 1)
-                    {
-                        // check for the correspoding password
-                        // if for password error
-                    }
-                    else
-                    {
-                        // flag to flase
-                        // add model error - username or password is incorrect
-                    }
-                }
-                else
-                {
-                    Username = currentUser.UsernameEmail;
-
-                    using (SqlConnection con = new SqlConnection(connectionString))
-                    {
-                        SqlCommand cmd = new SqlCommand("spCheckUserUsername", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        SqlParameter outParameter = new SqlParameter();
+                        outParameter.ParameterName = "@UserCount";
+                        outParameter.SqlDbType = SqlDbType.Int;
+                        outParameter.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(outParameter);
 
                         con.Open();
-                        cmd.ExecuteNonQuery();
+                        cmd.ExecuteScalar();
+
+                        count = (int)outParameter.Value;
                     }
 
                     if (count == 1)
                     {
-                        // check for the correspoding password
-                        // if for password error
+                        // Check for Email & password
+                        count = 0;
+                        using (SqlConnection con = new SqlConnection(connectionString))
+                        {
+                            SqlCommand cmd = new SqlCommand("spLoginEmailPassword", con);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@Email", Email);
+                            cmd.Parameters.AddWithValue("@Passwd", currentUser.Passwd);
+
+                            SqlParameter outParameter = new SqlParameter();
+                            outParameter.ParameterName = "@UserCount";
+                            outParameter.SqlDbType = SqlDbType.Int;
+                            outParameter.Direction = ParameterDirection.Output;
+                            cmd.Parameters.Add(outParameter);
+
+                            con.Open();
+                            cmd.ExecuteScalar();
+
+                            count = (int)outParameter.Value;
+                        }
+
+                        if(count != 1)
+                        {
+                            modelStateFlag = false;
+                            mState.AddModelError("LoginError", " Entered username or password is incorrect");
+                        }
                     }
                     else
                     {
-                        // flag to flase
-                        // add model error - username or password is incorrect
+                        modelStateFlag = false;
+                        mState.AddModelError("LoginError", " Entered username or password is incorrect");
+                    }
+                }
+                else
+                {
+                    count = 0;
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        SqlCommand cmd = new SqlCommand("spCheckUserForUsername", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Username", Username);
+
+                        SqlParameter outParameter = new SqlParameter();
+                        outParameter.ParameterName = "@UserCount";
+                        outParameter.SqlDbType = SqlDbType.Int;
+                        outParameter.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(outParameter);
+
+                        con.Open();
+                        cmd.ExecuteScalar();
+
+                        count = (int)outParameter.Value;
+                    }
+
+                    if (count == 1)
+                    {
+                        // Check for Username & password
+                        count = 0;
+                        using (SqlConnection con = new SqlConnection(connectionString))
+                        {
+                            SqlCommand cmd = new SqlCommand("spLoginUsernamePassword", con);
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            cmd.Parameters.AddWithValue("@Username", Username);
+                            cmd.Parameters.AddWithValue("@Passwd", currentUser.Passwd);
+
+                            SqlParameter outParameter = new SqlParameter();
+                            outParameter.ParameterName = "@UserCount";
+                            outParameter.SqlDbType = SqlDbType.Int;
+                            outParameter.Direction = ParameterDirection.Output;
+                            cmd.Parameters.Add(outParameter);
+
+                            con.Open();
+                            cmd.ExecuteScalar();
+
+                            count = (int)outParameter.Value;
+                        }
+
+                        if (count != 1)
+                        {
+                            modelStateFlag = false;
+                            mState.AddModelError("LoginValidator", " Entered username or password is incorrect");
+                        }
+                    }
+                    else
+                    {
+                        modelStateFlag = false;
+                        mState.AddModelError("LoginValidator", " Entered username or password is incorrect");
                     }
                 }
 

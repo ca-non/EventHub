@@ -20,9 +20,17 @@
             </form>
         </div>
         <ul class="nav-links">
-            <li>@Html.ActionLink("About", "About", "Home")</a></li>
-            <li>@Html.ActionLink("SignUp", "Register", "Home")</a></li>
-            <li>@Html.ActionLink("Login", "Login", "Home")</a></li>
+            <li>@Html.ActionLink("About Us", "About", "Home")</li>
+            @if (Session["Username"] == null)
+            {
+                <li id="create-Button">@Html.ActionLink("Create an account", "Register", "Home")</li>
+                <li>@Html.ActionLink("Login", "Login", "Home")</li>
+            }
+            else
+            {
+                <li id="create-Button">@Html.ActionLink("Create an event", "create", "Home")</li>
+                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+            }
         </ul>
     </nav>
     @RenderBody();

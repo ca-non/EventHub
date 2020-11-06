@@ -9,6 +9,8 @@ namespace UserBusinessLayer.ViewModels
 {
     public class LoginViewModel
     {
+        public bool LoginValidator { get; set; }
+
         [Required(ErrorMessage = "Please enter username or email")]
         public string UsernameEmail { get; set; }
 
