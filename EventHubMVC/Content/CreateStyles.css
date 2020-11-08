@@ -1,0 +1,102 @@
+﻿.create-container {
+    margin-left: 5%;
+    color: red;
+    margin-right: 60%;
+}
+
+
+.create-modal-container {
+    padding: 25px;
+    margin-top: 5vh;
+}
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+    padding: 10px;
+    padding-left: 0;
+}
+
+.create-modal-header {
+    color: black;
+    letter-spacing: 3px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 25px;
+    padding-left: 0;
+}
+
+textarea {
+    padding: 12px;
+    border-radius: 4px;
+    border: 2px solid;
+    border-color: gray;
+    outline: none;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+textarea:focus {
+    border: 2px solid;
+    border-color: dodgerblue;
+}
+
+#inValues-image > input{
+    border: 0px;
+}
+
+input {
+    padding: 12px;
+    border-radius: 4px;
+    border: 2px solid;
+    border-color: gray;
+    outline: none;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+input:focus {
+    border: 2px solid;
+    border-color: dodgerblue;
+}
+
+.inValues {
+    display: flex;
+}
+
+.inValues > input {
+    flex: 1;
+}
+
+.submit-container {
+    margin-top: 70px;
+    margin-bottom: 40px;
+}
+
+.submitButton {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+    .submitButton:active {
+        box-shadow: 0 4px 8px 0 rgba(0,90,156, 0.2), 0 6px 20px 0 rgba(0,90,156, 0.19);
+    }
+
+
+.banner-label {
+    padding-left: 8px;
+    font-size: 14px;
+    color: gray;
+    letter-spacing: 1px;
+    font-weight: lighter;
+
+}

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using UserBusinessLayer;
 using UserBusinessLayer.ViewModels;
+using EventBusinessLayer;
+using EventBusinessLayer.ViewModels;
 
 namespace EventHubMVC.Controllers
 {
@@ -128,7 +130,38 @@ namespace EventHubMVC.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Title = "EventHub - Create new event";
+
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(EventViewModel newEvent)
+        {
+            ViewBag.Title = "EventHub - Create new event";
+
+            if (ModelState.IsValid)
+            {
+
+                string sessionTag;
+
+                if(Session["Username"] != null)
+                {
+                    sessionTag =Session["Username"].ToString();
+                }
+                else
+                {
+                    sessionTag = Session["Email"].ToString();
+                }
+
+                EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+                eventBusinessLogic.addNewEvent(newEvent, ModelState, sessionTag);
+
+                return RedirectToAction("Index");
+            }
+
+
+            return View(newEvent);
         }
     }
 }

@@ -39,6 +39,7 @@
                 <p class="login-modal-header">Log In to Your Account</p>
                 <div class="form-group">
                     <form action="/Home/Login" method="post">
+                        @Html.AntiForgeryToken()
                         <div>@Html.ValidationMessageFor(model => model.LoginValidator, "", new { @class = "text-danger" })</div>
                         <div class="inputUsername">
                             @Html.EditorFor(model => model.UsernameEmail, new { HtmlAttributes = new { @placeholder = "Username or Email" } })

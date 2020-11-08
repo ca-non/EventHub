@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AboutStyles.css" />
+    <Content Include="Content\CreateStyles.css" />
     <Content Include="Content\IndexStyles.css" />
     <Content Include="Content\LoginStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
@@ -287,6 +288,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,8 +306,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserLayer\UserBusinessLayer.csproj">
-      <Project>{333a859a-b9bb-46fe-bf44-1b0917100832}</Project>
+    <ProjectReference Include="..\EventBusinessLayer\EventBusinessLayer.csproj">
+      <Project>{1bdf8266-cb33-420a-8260-6b43f9f589a4}</Project>
+      <Name>EventBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserBusinessLayer\UserBusinessLayer.csproj">
+      <Project>{fc6dfd38-9638-4c41-9e14-fdfaf2184ed4}</Project>
       <Name>UserBusinessLayer</Name>
     </ProjectReference>
   </ItemGroup>
