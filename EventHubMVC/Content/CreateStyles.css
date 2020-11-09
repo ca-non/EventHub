@@ -100,3 +100,12 @@ input:focus {
     font-weight: lighter;
 
 }
+
+#Catergories {
+    padding: 8px;
+    border-radius: 4px;
+    border: 2px solid;
+    border-color: gray;
+    outline: none;
+    letter-spacing: 1px;
+}

@@ -11,6 +11,10 @@
                         @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @placeholder = "Title" } })
                     </div>
                     <div> @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })</div>
+                    <div class="inputUsername inValues">
+                        @Html.DropDownList("Catergories", "Select Catergory")
+                    </div>
+                    <div> @Html.ValidationMessageFor(model => model.Catergories, "", new { @class = "text-danger" })</div>
                     <div class="inputEmail inValues">
                         @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @placeholder = "Location" } })
                     </div>
@@ -24,7 +28,7 @@
                     </div>
                     <div>@Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })</div>
                     <div class="inputPassword inValues">
-                        @Html.TextAreaFor(model => model.Description, 10, 100, new { placeholder = "Event description" } )
+                        @Html.TextAreaFor(model => model.Description, 10, 100, new { placeholder = "Event description" })
                     </div>
                     <div>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })</div>
                     <div class="banner-label inValues">@Html.Label("Banner image")</div>

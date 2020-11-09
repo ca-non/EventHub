@@ -19,11 +19,18 @@ namespace EventBusinessLayer
         public bool addNewEvent(EventViewModel newEvent, ModelStateDictionary mState, string sessionTag)
         {
             bool modelStateFlag = true;
-
+            
             // Title
             if(String.IsNullOrEmpty(newEvent.Title))
             {
                 mState.AddModelError("Title", "Title cannot be empty");
+                modelStateFlag = false;
+            }
+
+            // Catergory
+            if(String.IsNullOrEmpty(newEvent.Catergories))
+            {
+                mState.AddModelError("Catergories", "Please select a catergory for the event");
                 modelStateFlag = false;
             }
 
@@ -87,30 +94,28 @@ namespace EventBusinessLayer
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("@Title", newEvent.Title);
+                    cmd.Parameters.AddWithValue("@EventCatergoryId", int.Parse(newEvent.Catergories));
                     cmd.Parameters.AddWithValue("@EventLocation", newEvent.Location);
                     cmd.Parameters.AddWithValue("@EventTime", newEvent.Time);
                     cmd.Parameters.AddWithValue("@EventDate", newEvent.Date);
                     cmd.Parameters.AddWithValue("@EventDescription", newEvent.Description);
 
                     // Image logic
-                 //   try
-                   // {
+                    try
+                    {
                         if (newEvent.Image.ContentLength > 0)
                         {
-                            // save the image in the local folder
-                            // add the path to the database
                             string _FileName = Path.GetFileName(newEvent.Image.FileName);
-                            string _path = HttpContext.Current.Server.MapPath("~/UploadedEventImages/Images");
-                            string _savepath = Path.Combine(_path, _FileName);
+                            string _path = Path.Combine(HttpContext.Current.Server.MapPath("~/UploadedEventImages"), _FileName);
                             newEvent.Image.SaveAs(_path);
 
-                            cmd.Parameters.AddWithValue("@EventImage", _savepath);
+                            cmd.Parameters.AddWithValue("@EventImage", _path);
                         }
-                   /* }
+                    }
                     catch
                     {
-                        /cmd.Parameters.AddWithValue("@EventImage", "~/UploadedFiles/Default.jpg");
-                    }*/
+                        cmd.Parameters.AddWithValue("@EventImage", "~/UploadedEventImages/Default.jpg");
+                    }
 
                     int UserID;
                     // Get current user id from Email
@@ -167,6 +172,36 @@ namespace EventBusinessLayer
             }
 
             return modelStateFlag;
+        }
+
+        public List<SelectListItem> getCatergoryList()
+        {
+            List<SelectListItem> catergories = new List<SelectListItem>();
+
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spGetCatergories", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while(rdr.Read())
+                    {
+                        SelectListItem catergory = new SelectListItem
+                        {
+                            Text = rdr["Catergory"].ToString(),
+                            Value = rdr["Id"].ToString()
+                        };
+                        catergories.Add(catergory);
+                    }
+                }
+
+            }
+
+             return catergories;
         }
     }
 }

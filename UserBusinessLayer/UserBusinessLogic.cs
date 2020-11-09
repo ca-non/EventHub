@@ -17,7 +17,7 @@ namespace UserBusinessLayer
         public bool addNewUser(RegisterViewModel newUser, ModelStateDictionary mState)
         {
             bool modelStateFlag = true;
-
+           
 
             // Username server validation
             if (String.IsNullOrEmpty(newUser.UserName))

@@ -13,6 +13,9 @@ namespace EventBusinessLayer.ViewModels
         [Required(ErrorMessage = "Title cannot be empty")]
         public string Title { get; set; }
 
+        [Required(ErrorMessage = "Please select a catergory for the event")]
+        public string Catergories { get; set; }
+
         [Required(ErrorMessage = "Location cannot be empty")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid character/s entered for location")]
         public string Location { get; set; }

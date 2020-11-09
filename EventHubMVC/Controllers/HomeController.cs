@@ -132,6 +132,11 @@ namespace EventHubMVC.Controllers
         {
             ViewBag.Title = "EventHub - Create new event";
 
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<SelectListItem> categories = eventBusinessLogic.getCatergoryList();
+
+            ViewBag.Catergories = new SelectList(categories, "Value", "Text");
+
             return View();
         }
 
@@ -139,6 +144,7 @@ namespace EventHubMVC.Controllers
         public ActionResult Create(EventViewModel newEvent)
         {
             ViewBag.Title = "EventHub - Create new event";
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
 
             if (ModelState.IsValid)
             {
@@ -154,14 +160,18 @@ namespace EventHubMVC.Controllers
                     sessionTag = Session["Email"].ToString();
                 }
 
-                EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+               
                 eventBusinessLogic.addNewEvent(newEvent, ModelState, sessionTag);
 
                 return RedirectToAction("Index");
             }
 
 
-            return View(newEvent);
+           List<SelectListItem> categories = eventBusinessLogic.getCatergoryList();
+
+           ViewBag.Catergories = new SelectList(categories, "Value", "Text");
+
+           return View(newEvent);
         }
     }
 }
