@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="setupFunc()">
     <nav>
         <div class="logo">
             <h4>@Html.ActionLink("EventHub", "Index", "Home")</h4>
@@ -42,7 +42,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="~/Scripts/IndexSetup.js"></script>
 </body>
 
 </html>

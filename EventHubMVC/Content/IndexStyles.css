@@ -152,6 +152,11 @@ nav {
     font-size: 14px;
 }
 
+#all-link:focus {
+    color: dodgerblue;
+    font-weight: 800;
+    border-bottom: 2px solid dodgerblue;
+}
 
 .catergory-links a:hover {
     color: black;

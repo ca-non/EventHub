@@ -165,6 +165,7 @@
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\jumbo.jpg" />
     <Content Include="Images\upEvent.jpg" />
+    <Content Include="Scripts\IndexSetup.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="UploadedEventImages\Default.jpg" />

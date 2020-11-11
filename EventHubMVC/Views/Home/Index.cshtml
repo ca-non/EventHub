@@ -8,19 +8,19 @@
             <button type="button" id="jumbotronButton">Browse events</button>
         </div>
     </div>
-    <div class="eventCaterogy">
+    <div class="eventCatergory">
         <div class="eventCaterogy-header">
             <p>Event collection </p>
         </div>
         <div class="catergories">
             <ul class="catergory-links">
                 <li>
-                    @Ajax.ActionLink("All", "All", new AjaxOptions()
+                    @Ajax.ActionLink("All", "All", "", new AjaxOptions()
                                                {
                                                    HttpMethod = "GET",
                                                    UpdateTargetId = "divEvents",
                                                    InsertionMode = InsertionMode.Replace
-                                               })
+                                               }, new { @id="all-link" })
                 </li>
                 <li>
                     @Ajax.ActionLink("Festivals", "Festivals", new AjaxOptions()
