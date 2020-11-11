@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EventBusinessLayer.EventCard>
+@using EventBusinessLayer
+
+<div class="individualCatergory-header">
+    <img src="~/Images/@ViewBag.ImageName" alt="Page Jumbotron" width="100%" height="250">
+</div>
+<div class="individualCatergory-body">
+    @foreach (EventCard eachEvent in Model)
+    {
+        <div class="each-event">
+            <div class="event-pic">
+                <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
+            </div>
+            <div class="event-description">
+                <p id="eachEvent-dateTime">
+                    @eachEvent.Date   @eachEvent.Time
+                </p>
+                <p id="eachEvent-title">
+                    @eachEvent.Title
+                </p>
+            </div>
+        </div>
+    }
+</div>

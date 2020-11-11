@@ -1,4 +1,7 @@
-﻿<div class="pageBody">
+﻿<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div class="pageBody">
     <div class="jumbotron-container">
         <div class="jumbotron">
             <img src="~/Images/jumbo.jpg" alt="Page Jumbotron" width="100%" height="600">
@@ -11,35 +14,74 @@
         </div>
         <div class="catergories">
             <ul class="catergory-links">
-                <li><a href="javascript:void();">All</a></li>
-                <li><a href="javascript:void();">Festivals</a></li>
-                <li><a href="javascript:void();">Food & Drink</a></li>
-                <li><a href="javascript:void();">Art</a></li>
-                <li><a href="javascript:void();">Movies</a></li>
-                <li><a href="javascript:void();">Fun & Play</a></li>
-                <li><a href="javascript:void();">Sports</a></li>
-                <li><a href="javascript:void();">Public</a></li>
+                <li>
+                    @Ajax.ActionLink("All", "All", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Festivals", "Festivals", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Food & Drink", "FoodAndDrink", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Art", "Art", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Movies", "Movies", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Gaming", "Gaming", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Sports", "Sports", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
+                <li>
+                    @Ajax.ActionLink("Public", "Public", new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "divEvents",
+                                                   InsertionMode = InsertionMode.Replace
+                                               })
+                </li>
             </ul>
-        </div>
-        <div class="individualCatergory">
-            <div class="individualCatergory-header">
-                <img src="~/Images/art.jpg" alt="Page Jumbotron" width="100%" height="250">
-            </div>
-            <div class="individualCatergory-body">
-                <!--For each-->
-                <div class="each-event">
-                    <div class="event-pic">
-                        <img src="~/Images/upEvent.jpg" alt="Page Jumbotron" width="300" height="150">
-                    </div>
-                    <div class="event-description">
-                        <p>
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                            piece of classica
-                        </p>
-                    </div>
-                </div>
-                <!--For each-->
-            </div>
-        </div>
     </div>
+    <div class="individualCatergory" id="divEvents">
+
+    </div>
+</div>
 </div>

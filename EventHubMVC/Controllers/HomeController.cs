@@ -19,6 +19,86 @@ namespace EventHubMVC.Controllers
             return View();
         }
 
+        public PartialViewResult All()
+        {
+            ViewBag.ImageName = "All.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents();
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult Festivals()
+        {
+            ViewBag.ImageName = "Festivals.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Festivals");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult FoodAndDrink()
+        {
+            ViewBag.ImageName = "FoodAndDrink.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Food & Drink");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult Art()
+        {
+            ViewBag.ImageName = " Art.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Art");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult Movies()
+        {
+            ViewBag.ImageName = "Movies.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Movies");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult Gaming()
+        {
+            ViewBag.ImageName = "Gaming.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Gaming");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult Sports()
+        {
+            ViewBag.ImageName = " Sports.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Sports");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
+        public PartialViewResult Public()
+        {
+            ViewBag.ImageName = "Public.jpg";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Public");
+
+            return PartialView("~/Views/Home/PartialViews/_HomeEvents.cshtml", eventCards);
+        }
+
         public ActionResult About()
         {
             ViewBag.Title = "EventHub - About";

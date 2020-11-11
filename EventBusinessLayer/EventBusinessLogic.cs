@@ -11,6 +11,7 @@ using System.Data;
 using System.Configuration;
 using System.IO;
 using System.Web;
+using Humanizer;
 
 namespace EventBusinessLayer
 {
@@ -106,16 +107,19 @@ namespace EventBusinessLayer
                         if (newEvent.Image.ContentLength > 0)
                         {
                             string _FileName = Path.GetFileName(newEvent.Image.FileName);
-                            string _path = Path.Combine(HttpContext.Current.Server.MapPath("~/UploadedEventImages"), _FileName);
-                            newEvent.Image.SaveAs(_path);
+                            string path = Path.Combine(HttpContext.Current.Server.MapPath("~/UploadedEventImages"), _FileName);
+                            newEvent.Image.SaveAs(path);
 
-                            cmd.Parameters.AddWithValue("@EventImage", _path);
+                            cmd.Parameters.AddWithValue("@EventImage", path);
                         }
                     }
                     catch
                     {
-                        cmd.Parameters.AddWithValue("@EventImage", "~/UploadedEventImages/Default.jpg");
-                    }
+                        string _FileName = "Default.jpg";
+                        string path = Path.Combine(HttpContext.Current.Server.MapPath("~/UploadedEventImages"), _FileName);
+
+                        cmd.Parameters.AddWithValue("@EventImage", path);
+                     }
 
                     int UserID;
                     // Get current user id from Email
@@ -202,6 +206,127 @@ namespace EventBusinessLayer
             }
 
              return catergories;
+        }
+
+        public List<EventCard> getAllEvents()
+        {
+            List<EventCard> eventCards = new List<EventCard>();
+
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spGetAllEvents", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while(rdr.Read())
+                    {
+                        EventCard eventCard = new EventCard();
+
+                        eventCard.Title = rdr["Title"].ToString();
+
+                        char[] separators = { '/', ' ' };
+                        string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                        eventCard.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                        string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                        string postFix = "";
+                        if (int.Parse(timeBits[0]) == 11)
+                        {
+                            postFix = "AM";
+                        }
+                        else
+                        {
+                            postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                        }
+                        eventCard.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        string imageRaw = rdr["EventImage"].ToString();
+                        int index = imageRaw.LastIndexOf('\\');
+                        eventCard.Image = imageRaw.Substring(index+1);
+
+                        eventCards.Add(eventCard);
+                    }
+
+                }
+            }
+
+            return eventCards;
+        }
+
+        public List<EventCard> getAllEvents(string catergory)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+            int eventId;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spGetCatergoryId", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Catergory", catergory);
+
+                SqlParameter outputParameter = new SqlParameter();
+                outputParameter.ParameterName = "@Id";
+                outputParameter.SqlDbType = SqlDbType.Int;
+                outputParameter.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(outputParameter);
+
+                con.Open();
+                cmd.ExecuteScalar();
+
+                eventId = (int)outputParameter.Value;
+            }
+
+            List<EventCard> eventCards = new List<EventCard>();
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spGetEventByCatergory", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", eventId);
+
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        EventCard eventCard = new EventCard();
+
+                        eventCard.Title = rdr["Title"].ToString();
+
+                        char[] separators = { '/', ' ' };
+                        string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                        eventCard.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                        string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                        string postFix = "";
+                        if (int.Parse(timeBits[0]) == 11)
+                        {
+                            postFix = "AM";
+                        }
+                        else
+                        {
+                            postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                        }
+                        eventCard.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        string imageRaw = rdr["EventImage"].ToString();
+                        int index = imageRaw.LastIndexOf('\\');
+                        eventCard.Image = imageRaw.Substring(index + 1);
+
+                        eventCards.Add(eventCard);
+                    }
+
+                }
+            }
+
+            return eventCards;
         }
     }
 }
