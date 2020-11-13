@@ -8,17 +8,19 @@
     @foreach (EventCard eachEvent in Model)
     {
         <div class="each-event">
-            <div class="event-pic">
-                <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
-            </div>
-            <div class="event-description">
-                <p id="eachEvent-dateTime">
-                    @eachEvent.Date   @eachEvent.Time
-                </p>
-                <p id="eachEvent-title">
-                    @eachEvent.Title
-                </p>
-            </div>
+            <a href="#" onclick="location.href='@Url.Action("ActionName", "Home", new { id = eachEvent.Date })'">
+                <div class="event-pic">
+                    <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
+                </div>
+                <div class="event-description">
+                    <p id="eachEvent-dateTime">
+                        @eachEvent.Date   @eachEvent.Time
+                    </p>
+                    <p id="eachEvent-title">
+                        @eachEvent.Title
+                    </p>
+                 </div>
+             </a>
         </div>
     }
 </div>

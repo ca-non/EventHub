@@ -45,8 +45,10 @@ namespace EventHubMVC.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult BrowseEventsDT(FormCollection formCollection)
+        public ActionResult BrowseEvents(FormCollection formCollection)
         {
+            ViewBag.Title = "Browse events";
+
             EventDT eventDT = new EventDT();
             eventDT.FromTime = formCollection["from-time"];
             eventDT.ToTime = formCollection["to-time"];
@@ -56,7 +58,7 @@ namespace EventHubMVC.Controllers
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
             List<EventInfo> eventInfoList = eventBusinessLogic.getDTResults(eventDT);
 
-            return PartialView("~/Views/Home/PartialViews/_BrowseEvents.cshtml", eventInfoList);
+            return View(eventInfoList);
         }
 
         public PartialViewResult All()
