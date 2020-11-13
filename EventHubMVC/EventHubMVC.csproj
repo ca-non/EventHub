@@ -153,6 +153,7 @@
     <Content Include="Content\AboutStyles.css" />
     <Content Include="Content\BrowseEventsStyles.css" />
     <Content Include="Content\CreateStyles.css" />
+    <Content Include="Content\EventStyles.css" />
     <Content Include="Content\IndexStyles.css" />
     <Content Include="Content\LoginStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Home\SearchEvents.cshtml" />
     <Content Include="Views\Home\BrowseEvents.cshtml" />
     <Content Include="Views\Home\PartialViews\_BrowseEvents.cshtml" />
+    <Content Include="Views\Home\Event.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

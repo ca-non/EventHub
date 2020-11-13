@@ -8,7 +8,7 @@
     @foreach (EventCard eachEvent in Model)
     {
         <div class="each-event">
-            <a href="#" onclick="location.href='@Url.Action("ActionName", "Home", new { id = eachEvent.Date })'">
+            <a href="#" onclick="location.href='@Url.Action("Event", "Home", new { Id = eachEvent.EventId })'">
                 <div class="event-pic">
                     <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
                 </div>

@@ -226,6 +226,8 @@ namespace EventBusinessLayer
                     {
                         EventCard eventCard = new EventCard();
 
+                        eventCard.EventId = (int)rdr["Id"];
+
                         eventCard.Title = rdr["Title"].ToString();
 
                         char[] separators = { '/', ' ' };
@@ -297,6 +299,8 @@ namespace EventBusinessLayer
                     while (rdr.Read())
                     {
                         EventCard eventCard = new EventCard();
+
+                        eventCard.EventId = (int)rdr["Id"];
 
                         eventCard.Title = rdr["Title"].ToString();
 
@@ -757,6 +761,54 @@ namespace EventBusinessLayer
             }
 
             return eventInfoList;
+        }
+
+        public EventInfo getEvent(int Id)
+        {
+            EventInfo eventInfo = new EventInfo();
+
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spGetEvent", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", Id);
+
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while(rdr.Read())
+                    {
+                        eventInfo.Title = rdr["Title"].ToString();
+
+                        char[] separators = { '/', ' ' };
+                        string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                        eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                        string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                        string postFix = "";
+                        if (int.Parse(timeBits[0]) == 11)
+                        {
+                            postFix = "AM";
+                        }
+                        else
+                        {
+                            postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                        }
+                        eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        string imageRaw = rdr["EventImage"].ToString();
+                        int index = imageRaw.LastIndexOf('\\');
+                        eventInfo.Image = imageRaw.Substring(index + 1);
+
+                        eventInfo.Description = rdr["EventDescription"].ToString();
+                    }
+                }
+            }
+
+            return eventInfo;
         }
     }
 }

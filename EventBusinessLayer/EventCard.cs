@@ -8,6 +8,8 @@ namespace EventBusinessLayer
 {
     public class EventCard
     {
+        public int EventId { get; set; }
+
         public string Title { get; set; }
 
         public string Time { get; set; }

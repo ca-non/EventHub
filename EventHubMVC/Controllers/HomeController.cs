@@ -60,6 +60,17 @@ namespace EventHubMVC.Controllers
 
             return View(eventInfoList);
         }
+        
+        public ActionResult Event(int Id)
+        {
+            ViewBag.Tile = "Event";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            EventInfo eventInfo = eventBusinessLogic.getEvent(Id);
+
+            return View(eventInfo);
+        }
+
 
         public PartialViewResult All()
         {
