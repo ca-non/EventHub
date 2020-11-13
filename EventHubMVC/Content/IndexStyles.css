@@ -212,9 +212,9 @@ nav {
 
 /* Footer */
 .footerTag{
-    margin-top: 50px;
+    margin-top: 62px;
     padding: 25px;
-    padding-top:100px;
+    padding-top:40px;
     background-color: rgb(248, 248, 248);
     display: flex;
     justify-content: center;

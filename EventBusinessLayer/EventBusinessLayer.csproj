@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="EventBusinessLogic.cs" />
     <Compile Include="EventCard.cs" />
+    <Compile Include="EventInfo.cs" />
     <Compile Include="ViewModels\EventViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,105 @@
+﻿<link rel="stylesheet" href="~/Content/BrowseEventsStyles.css" />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div id="browseEvents-wrapper">
+    <div id="sidebar">
+        <ul>
+            <li>
+                @Ajax.ActionLink("All", "BrowseEvent", new { browseType = "All"}, new AjaxOptions()
+                                           {
+                                               HttpMethod = "GET",
+                                               UpdateTargetId = "browseEvents-content",
+                                               InsertionMode = InsertionMode.Replace
+                                           })
+            </li>
+            <li>
+                @Ajax.ActionLink("Festivals", "BrowseEvent", new { browseType = "Festivals" }, new AjaxOptions()
+                                           {
+                                               HttpMethod = "GET",
+                                               UpdateTargetId = "browseEvents-content",
+                                               InsertionMode = InsertionMode.Replace
+                                           })
+            </li>
+            <li>
+                @Ajax.ActionLink("Food & Drink", "BrowseEvent", new { browseType = "Food & Drink" }, new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                UpdateTargetId = "browseEvents-content",
+                                                InsertionMode = InsertionMode.Replace
+                                            })
+            </li>
+            <li>
+                @Ajax.ActionLink("Art", "BrowseEvent", new { browseType = "Art" }, new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                UpdateTargetId = "browseEvents-content",
+                                                InsertionMode = InsertionMode.Replace
+                                            })
+            </li>
+            <li>
+                @Ajax.ActionLink("Movies", "BrowseEvent", new { browseType = "Movies" }, new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                UpdateTargetId = "browseEvents-content",
+                                                InsertionMode = InsertionMode.Replace
+                                            })
+            </li>
+            <li>
+                @Ajax.ActionLink("Gaming", "BrowseEvent", new { browseType = "Gaming" }, new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                UpdateTargetId = "browseEvents-content",
+                                                InsertionMode = InsertionMode.Replace
+                                            })
+            </li>
+            <li>
+                @Ajax.ActionLink("Sports", "BrowseEvent", new { browseType = "Sports" }, new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                UpdateTargetId = "browseEvents-content",
+                                                InsertionMode = InsertionMode.Replace
+                                            })
+            </li>
+            <li>
+                @Ajax.ActionLink("Public", "BrowseEvent", new { browseType = "Public" }, new AjaxOptions()
+                                            {
+                                                HttpMethod = "GET",
+                                                UpdateTargetId = "browseEvents-content",
+                                                InsertionMode = InsertionMode.Replace
+                                            })
+            </li>
+        </ul>
+        <div>
+            <hr id="divider" />
+            @using (Html.BeginForm("BrowseEventsDT", "Home", FormMethod.Get))
+            {
+                <div id="sd">
+                    <p>Advanced Search</p>
+                    <div id="browse-time">
+                        <p>Event Time</p>
+                        <label for="appt">From </label>
+                        <input type="time" id="from-time" name="from-time">
+                        <label for="appt">To </label>
+                        <input type="time" id="to-time" name="to-time">
+                    </div>
+                    <div id="browse-date">
+                        <p>Event Date</p>
+                        <label for="birthday">From </label>
+                        <input type="date" id="from-date" name="from-date">
+                        <label for="birthday">To </label>
+                        <input type="date" id="to-date" name="to-date">
+                    </div>
+                    <div id="submit-be">
+                        <input type="submit" value="submit" />
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+    <div id="browseEvents-content">
+
+    </div>
+</div>
+

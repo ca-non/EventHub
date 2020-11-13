@@ -151,10 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AboutStyles.css" />
+    <Content Include="Content\BrowseEventsStyles.css" />
     <Content Include="Content\CreateStyles.css" />
     <Content Include="Content\IndexStyles.css" />
     <Content Include="Content\LoginStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
+    <Content Include="Content\SearchEventsStyles.css" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -164,6 +166,7 @@
     <Content Include="Images\art.jpg" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\jumbo.jpg" />
+    <Content Include="Images\NoResult.jpg" />
     <Content Include="Images\upEvent.jpg" />
     <Content Include="Scripts\IndexSetup.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -295,6 +298,10 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\PartialViews\_HomeEvents.cshtml" />
+    <Content Include="Views\Home\SearchEvents.cshtml" />
+    <Content Include="Views\Home\BrowseEvents.cshtml" />
+    <Content Include="Views\Home\PartialViews\_BrowseEvents.cshtml" />
+    <Content Include="Views\Home\BrowseEventsDT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

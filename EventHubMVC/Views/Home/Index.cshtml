@@ -5,7 +5,10 @@
     <div class="jumbotron-container">
         <div class="jumbotron">
             <img src="~/Images/jumbo.jpg" alt="Page Jumbotron" width="100%" height="600">
-            <button type="button" id="jumbotronButton">Browse events</button>
+            @using (Html.BeginForm("BrowseEvents", "Home", FormMethod.Get))
+            {
+                <input type="submit" id="jumbotronButton" value="Browse events"/>
+            }
         </div>
     </div>
     <div class="eventCatergory">
@@ -20,7 +23,7 @@
                                                    HttpMethod = "GET",
                                                    UpdateTargetId = "divEvents",
                                                    InsertionMode = InsertionMode.Replace
-                                               }, new { @id="all-link" })
+                                               }, new { @id = "all-link" })
                 </li>
                 <li>
                     @Ajax.ActionLink("Festivals", "Festivals", new AjaxOptions()

@@ -19,6 +19,45 @@ namespace EventHubMVC.Controllers
             return View();
         }
 
+        public ActionResult SearchEvents(string searchBox)
+        {
+            ViewBag.Title = "Search events";
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventInfo> eventInfoList = eventBusinessLogic.getSearchResults(searchBox);
+
+            return View(eventInfoList);
+        }
+
+        public ActionResult BrowseEvents()
+        {
+            ViewBag.Title = "Browse events";
+
+            return View();
+        }
+
+        public PartialViewResult BrowseEvent(string browseType)
+        {
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventInfo> eventInfoList = eventBusinessLogic.getBrowseResults(browseType);
+
+            return PartialView("~/Views/Home/PartialViews/_BrowseEvents.cshtml", eventInfoList);
+        }
+
+        public PartialViewResult BrowseEventsDT(FormCollection formCollection)
+        {
+            EventDT eventDT = new EventDT();
+            eventDT.FromTime = formCollection["from-time"];
+            eventDT.ToTime = formCollection["to-time"];
+            eventDT.FromDate = formCollection["from-date"];
+            eventDT.ToDate = formCollection["from-date"];
+
+            EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
+            List<EventInfo> eventInfoList = eventBusinessLogic.getDTResults(eventDT);
+
+            return PartialView("~/Views/Home/PartialViews/_BrowseEvents.cshtml", eventInfoList);
+        }
+
         public PartialViewResult All()
         {
             ViewBag.ImageName = "All.jpg";

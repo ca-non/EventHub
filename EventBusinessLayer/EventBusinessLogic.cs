@@ -328,5 +328,186 @@ namespace EventBusinessLayer
 
             return eventCards;
         }
+
+        public List<EventInfo> getSearchResults(string searchValue)
+        {
+            List<EventInfo> eventInfoList = new List<EventInfo>();
+
+            if (!String.IsNullOrEmpty(searchValue))
+            {
+
+                string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(cs))
+                {
+                    SqlCommand cmd = new SqlCommand("spSearchResults", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@searchValue", searchValue);
+
+                    con.Open();
+
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            EventInfo eventInfo = new EventInfo();
+
+                            eventInfo.Title = rdr["Title"].ToString();
+
+                            char[] separators = { '/', ' ' };
+                            string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                            eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                            string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                            string postFix = "";
+                            if (int.Parse(timeBits[0]) == 11)
+                            {
+                                postFix = "AM";
+                            }
+                            else
+                            {
+                                postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                            }
+                            eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                            string imageRaw = rdr["EventImage"].ToString();
+                            int index = imageRaw.LastIndexOf('\\');
+                            eventInfo.Image = imageRaw.Substring(index + 1);
+
+                            eventInfo.Description = rdr["EventDescription"].ToString();
+
+                            eventInfoList.Add(eventInfo);
+                        }
+                    }
+                }
+            }
+
+            return eventInfoList;
+        }
+
+        public List<EventInfo> getBrowseResults(string browseType)
+        {
+            List<EventInfo> eventInfoList = new List<EventInfo>();
+
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
+            int eventId = 0;
+
+            if (browseType != "All")
+            {
+                using (SqlConnection con = new SqlConnection(cs))
+                {
+                    SqlCommand cmd = new SqlCommand("spGetCatergoryId", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@Catergory", browseType);
+
+                    SqlParameter outputParameter = new SqlParameter();
+                    outputParameter.ParameterName = "@Id";
+                    outputParameter.SqlDbType = SqlDbType.Int;
+                    outputParameter.Direction = ParameterDirection.Output;
+
+                    cmd.Parameters.Add(outputParameter);
+
+                    con.Open();
+                    cmd.ExecuteScalar();
+
+                    eventId = (int)outputParameter.Value;
+                }
+            }
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd;
+
+                if (browseType != "All")
+                {
+                    cmd = new SqlCommand("spGetEventByCatergory", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", eventId);
+                }
+                else
+                {
+                    cmd = new SqlCommand("spGetAllEvents", con);
+                }
+
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        EventInfo eventInfo = new EventInfo();
+
+                        eventInfo.Title = rdr["Title"].ToString();
+
+                        char[] separators = { '/', ' ' };
+                        string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                        eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                        string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                        string postFix = "";
+                        if (int.Parse(timeBits[0]) == 11)
+                        {
+                            postFix = "AM";
+                        }
+                        else
+                        {
+                            postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                        }
+                        eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        string imageRaw = rdr["EventImage"].ToString();
+                        int index = imageRaw.LastIndexOf('\\');
+                        eventInfo.Image = imageRaw.Substring(index + 1);
+
+                        eventInfo.Description = rdr["EventDescription"].ToString();
+
+                        eventInfoList.Add(eventInfo);
+                    }
+                }
+            }
+
+            return eventInfoList;
+        }
+
+        public List<EventInfo> getDTResults(EventDT eventDT)
+        {
+            List<EventInfo> eventInfoList = new List<EventInfo>();
+
+            if(!string.IsNullOrEmpty(eventDT.FromDate) || !string.IsNullOrEmpty(eventDT.ToDate) || !string.IsNullOrEmpty(eventDT.FromTime) || !string.IsNullOrEmpty(eventDT.ToTime))
+            {
+                string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
+                if (!string.IsNullOrEmpty(eventDT.FromDate) && !string.IsNullOrEmpty(eventDT.ToDate) && !string.IsNullOrEmpty(eventDT.FromTime) && !string.IsNullOrEmpty(eventDT.ToTime))
+                {
+                    using (SqlConnection con = new SqlConnection(cs))
+                    {
+                        SqlCommand cmd = new SqlCommand("", con);
+                    }
+                }
+                else if(!string.IsNullOrEmpty(eventDT.FromDate) && !string.IsNullOrEmpty(eventDT.ToDate))
+                {
+
+                }
+                else if(!string.IsNullOrEmpty(eventDT.FromTime) && !string.IsNullOrEmpty(eventDT.ToTime))
+                {
+
+                }
+                else if(!string.IsNullOrEmpty(eventDT.FromDate) && !string.IsNullOrEmpty(eventDT.FromTime))
+                {
+
+                }
+                else if(!string.IsNullOrEmpty(eventDT.FromDate))
+                {
+
+                }
+                else if(!string.IsNullOrEmpty(eventDT.FromTime))
+                {
+
+                }
+            }
+
+            return eventInfoList;
+        }
     }
 }
