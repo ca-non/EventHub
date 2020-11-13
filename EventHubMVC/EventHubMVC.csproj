@@ -301,7 +301,6 @@
     <Content Include="Views\Home\SearchEvents.cshtml" />
     <Content Include="Views\Home\BrowseEvents.cshtml" />
     <Content Include="Views\Home\PartialViews\_BrowseEvents.cshtml" />
-    <Content Include="Views\Home\BrowseEventsDT.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

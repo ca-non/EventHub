@@ -482,28 +482,277 @@ namespace EventBusinessLayer
                 {
                     using (SqlConnection con = new SqlConnection(cs))
                     {
-                        SqlCommand cmd = new SqlCommand("", con);
+                        SqlCommand cmd = new SqlCommand("spFTdateFTtime", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fromDate", eventDT.FromDate);
+                        cmd.Parameters.AddWithValue("@toDate", eventDT.ToDate);
+                        cmd.Parameters.AddWithValue("@fromTime", eventDT.FromTime);
+                        cmd.Parameters.AddWithValue("@toTime", eventDT.ToDate);
+
+                        con.Open();
+
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while(rdr.Read())
+                            {
+                                EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Title = rdr["Title"].ToString();
+
+                                char[] separators = { '/', ' ' };
+                                string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                                eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                                string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                                string postFix = "";
+                                if (int.Parse(timeBits[0]) == 11)
+                                {
+                                    postFix = "AM";
+                                }
+                                else
+                                {
+                                    postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                                }
+                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                                string imageRaw = rdr["EventImage"].ToString();
+                                int index = imageRaw.LastIndexOf('\\');
+                                eventInfo.Image = imageRaw.Substring(index + 1);
+
+                                eventInfo.Description = rdr["EventDescription"].ToString();
+
+                                eventInfoList.Add(eventInfo);
+                            }
+                        }
                     }
                 }
                 else if(!string.IsNullOrEmpty(eventDT.FromDate) && !string.IsNullOrEmpty(eventDT.ToDate))
                 {
+                    using (SqlConnection con = new SqlConnection(cs))
+                    {
+                        SqlCommand cmd = new SqlCommand("spFTdate", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fromDate", eventDT.FromDate);
+                        cmd.Parameters.AddWithValue("@toDate", eventDT.ToDate);
 
+                        con.Open();
+
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Title = rdr["Title"].ToString();
+
+                                char[] separators = { '/', ' ' };
+                                string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                                eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                                string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                                string postFix = "";
+                                if (int.Parse(timeBits[0]) == 11)
+                                {
+                                    postFix = "AM";
+                                }
+                                else
+                                {
+                                    postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                                }
+                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                                string imageRaw = rdr["EventImage"].ToString();
+                                int index = imageRaw.LastIndexOf('\\');
+                                eventInfo.Image = imageRaw.Substring(index + 1);
+
+                                eventInfo.Description = rdr["EventDescription"].ToString();
+
+                                eventInfoList.Add(eventInfo);
+                            }
+                        }
+                    }
                 }
                 else if(!string.IsNullOrEmpty(eventDT.FromTime) && !string.IsNullOrEmpty(eventDT.ToTime))
                 {
+                    using (SqlConnection con = new SqlConnection(cs))
+                    {
+                        SqlCommand cmd = new SqlCommand("spFTtime", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fromTime", eventDT.FromTime);
+                        cmd.Parameters.AddWithValue("@toTime", eventDT.ToDate);
 
+                        con.Open();
+
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Title = rdr["Title"].ToString();
+
+                                char[] separators = { '/', ' ' };
+                                string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                                eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                                string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                                string postFix = "";
+                                if (int.Parse(timeBits[0]) == 11)
+                                {
+                                    postFix = "AM";
+                                }
+                                else
+                                {
+                                    postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                                }
+                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                                string imageRaw = rdr["EventImage"].ToString();
+                                int index = imageRaw.LastIndexOf('\\');
+                                eventInfo.Image = imageRaw.Substring(index + 1);
+
+                                eventInfo.Description = rdr["EventDescription"].ToString();
+
+                                eventInfoList.Add(eventInfo);
+                            }
+                        }
+                    }
                 }
                 else if(!string.IsNullOrEmpty(eventDT.FromDate) && !string.IsNullOrEmpty(eventDT.FromTime))
                 {
+                    using (SqlConnection con = new SqlConnection(cs))
+                    {
+                        SqlCommand cmd = new SqlCommand("spFdateFtime", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fromDate", eventDT.FromDate);
+                        cmd.Parameters.AddWithValue("@fromTime", eventDT.FromTime);
 
+                        con.Open();
+
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Title = rdr["Title"].ToString();
+
+                                char[] separators = { '/', ' ' };
+                                string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                                eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                                string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                                string postFix = "";
+                                if (int.Parse(timeBits[0]) == 11)
+                                {
+                                    postFix = "AM";
+                                }
+                                else
+                                {
+                                    postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                                }
+                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                                string imageRaw = rdr["EventImage"].ToString();
+                                int index = imageRaw.LastIndexOf('\\');
+                                eventInfo.Image = imageRaw.Substring(index + 1);
+
+                                eventInfo.Description = rdr["EventDescription"].ToString();
+
+                                eventInfoList.Add(eventInfo);
+                            }
+                        }
+                    }
                 }
                 else if(!string.IsNullOrEmpty(eventDT.FromDate))
                 {
+                    using (SqlConnection con = new SqlConnection(cs))
+                    {
+                        SqlCommand cmd = new SqlCommand("spFdate", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fromDate", eventDT.FromDate);
 
+                        con.Open();
+
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Title = rdr["Title"].ToString();
+
+                                char[] separators = { '/', ' ' };
+                                string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                                eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                                string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                                string postFix = "";
+                                if (int.Parse(timeBits[0]) == 11)
+                                {
+                                    postFix = "AM";
+                                }
+                                else
+                                {
+                                    postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                                }
+                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                                string imageRaw = rdr["EventImage"].ToString();
+                                int index = imageRaw.LastIndexOf('\\');
+                                eventInfo.Image = imageRaw.Substring(index + 1);
+
+                                eventInfo.Description = rdr["EventDescription"].ToString();
+
+                                eventInfoList.Add(eventInfo);
+                            }
+                        }
+                    }
                 }
                 else if(!string.IsNullOrEmpty(eventDT.FromTime))
                 {
+                    using (SqlConnection con = new SqlConnection(cs))
+                    {
+                        SqlCommand cmd = new SqlCommand("spFtime", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@fromTime", eventDT.FromTime);
 
+                        con.Open();
+
+                        using (SqlDataReader rdr = cmd.ExecuteReader())
+                        {
+                            while (rdr.Read())
+                            {
+                                EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Title = rdr["Title"].ToString();
+
+                                char[] separators = { '/', ' ' };
+                                string[] dateBits = rdr["EventDate"].ToString().Split(separators);
+                                eventInfo.Date = new DateTime(int.Parse(dateBits[2]), int.Parse(dateBits[0]), int.Parse(dateBits[1])).ToOrdinalWords();
+
+                                string[] timeBits = rdr["EventTime"].ToString().Split(':');
+                                string postFix = "";
+                                if (int.Parse(timeBits[0]) == 11)
+                                {
+                                    postFix = "AM";
+                                }
+                                else
+                                {
+                                    postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
+                                }
+                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                                string imageRaw = rdr["EventImage"].ToString();
+                                int index = imageRaw.LastIndexOf('\\');
+                                eventInfo.Image = imageRaw.Substring(index + 1);
+
+                                eventInfo.Description = rdr["EventDescription"].ToString();
+
+                                eventInfoList.Add(eventInfo);
+                            }
+                        }
+                    }
                 }
             }
 

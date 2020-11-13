@@ -44,6 +44,7 @@ namespace EventHubMVC.Controllers
             return PartialView("~/Views/Home/PartialViews/_BrowseEvents.cshtml", eventInfoList);
         }
 
+        [HttpPost]
         public PartialViewResult BrowseEventsDT(FormCollection formCollection)
         {
             EventDT eventDT = new EventDT();
