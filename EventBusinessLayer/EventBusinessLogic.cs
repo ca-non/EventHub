@@ -81,8 +81,19 @@ namespace EventBusinessLayer
                 if (!pattern.IsMatch(newEvent.Date))
                 {
                     mState.AddModelError("Date", "Please follow the format MM/DD/YYYY");
-
                     modelStateFlag = false;
+                }
+                else
+                {
+                    // Greater than todays date
+                    DateTime today = DateTime.Today;
+                    DateTime eventTime = DateTime.Parse(newEvent.Date);
+
+                    if(!(eventTime >= today))
+                    {
+                        mState.AddModelError("Date", "Date entered is already passed");
+                        modelStateFlag = false;
+                    }
                 }
             }
 
