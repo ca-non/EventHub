@@ -61,6 +61,15 @@ namespace EventHubMVC.Controllers
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
             List<EventInfo> eventInfoList = eventBusinessLogic.getDTResults(eventDT);
 
+           if(eventInfoList.Count == 0)
+            {
+                ViewBag.Results = "NoResults";
+            }
+            else
+            {
+                ViewBag.Results = "Results";
+            }
+
             return View(eventInfoList);
         }
         

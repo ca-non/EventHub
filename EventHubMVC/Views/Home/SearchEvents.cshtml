@@ -14,6 +14,7 @@
     {
         foreach(EventInfo eachevent in Model)
         {
+        <a class="search-event-link" href="#" onclick="location.href='@Url.Action("Event", "Home", new { Id = eachevent.Id })'">
             <div class="event-wrapper-search">
                 <div class="event-image-search">
                     <img src="~/UploadedEventImages/@eachevent.Image">
@@ -22,12 +23,15 @@
                     <p>@eachevent.Title</p>
                     <p class="search-event-title">@eachevent.Date</p>
                     <p>@eachevent.Time</p>
+                    <p>@eachevent.Location</p>
                 </div>
                 <div class="event-description-search">
-                    <p>@eachevent.Description</p>
+                    <p class="description-para">@eachevent.Description</p>
                 </div>
             </div>
+          </a>
         }
     }
 
 </div>
+<script src="~/Scripts/searchEventScript.js"></script>

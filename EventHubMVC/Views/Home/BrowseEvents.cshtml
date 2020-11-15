@@ -140,7 +140,7 @@
             </div>
         </div>
         <div id="browseEvents-content">
-            @if (Model != null)
+            @if (Model != null && ViewBag.Results == "Results")
             {
                 <div class="individualCatergory-body-b">
                     @foreach (EventInfo eachEvent in Model)
@@ -162,13 +162,21 @@
                                     </p>
                                 </div>
                                 <div class="event-description-b">
-                                    <p id="eachEventdescription-b">
+                                    <p id="eachEventdescription-b" class="browseEventParagraph">
                                         @eachEvent.Description
                                     </p>
                                 </div>
                             </div>
                         </a>
                     }
+                </div>
+            }
+            else if (ViewBag.Results == "NoResults")
+            {
+                <div class="individualCatergory-body-b">
+                    <p id="no-result">
+                        <img src="~/Images/NoResult.jpg"/>
+                    </p>
                 </div>
             }
         </div>
@@ -182,6 +190,11 @@
         </script>
 
     }
+    <script src="~/Scripts/browseEventsScript.js"></script>
+    <script>
+        shortText();
+    </script>
+
 
     <footer class="footerTag">
         <div>

@@ -435,6 +435,13 @@ nav {
     color: black;
 }
 
+
+#no-result > img {
+    height: 64vh;
+    width: 54vw;
+}
+
+
 /* Footer */
 .footerTag {
     margin-top: 62px;
@@ -444,6 +451,7 @@ nav {
     display: flex;
     justify-content: center;
 }
+
 
     .footerTag p {
         font-size: 12px;

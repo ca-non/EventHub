@@ -392,6 +392,8 @@ namespace EventBusinessLayer
 
                             eventInfo.Description = rdr["EventDescription"].ToString();
 
+                            eventInfo.Location = rdr["EventLocation"].ToString();
+
                             eventInfoList.Add(eventInfo);
                         }
                     }
@@ -564,6 +566,8 @@ namespace EventBusinessLayer
                             {
                                 EventInfo eventInfo = new EventInfo();
 
+                                eventInfo.Id = (int)rdr["Id"];
+
                                 eventInfo.Title = rdr["Title"].ToString();
 
                                 char[] separators = { '/', ' ' };
@@ -609,6 +613,8 @@ namespace EventBusinessLayer
                             while (rdr.Read())
                             {
                                 EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Id = (int)rdr["Id"];
 
                                 eventInfo.Title = rdr["Title"].ToString();
 
@@ -656,6 +662,8 @@ namespace EventBusinessLayer
                             {
                                 EventInfo eventInfo = new EventInfo();
 
+                                eventInfo.Id = (int)rdr["Id"];
+
                                 eventInfo.Title = rdr["Title"].ToString();
 
                                 char[] separators = { '/', ' ' };
@@ -701,6 +709,8 @@ namespace EventBusinessLayer
                             {
                                 EventInfo eventInfo = new EventInfo();
 
+                                eventInfo.Id = (int)rdr["Id"];
+
                                 eventInfo.Title = rdr["Title"].ToString();
 
                                 char[] separators = { '/', ' ' };
@@ -745,6 +755,8 @@ namespace EventBusinessLayer
                             while (rdr.Read())
                             {
                                 EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Id = (int)rdr["Id"];
 
                                 eventInfo.Title = rdr["Title"].ToString();
 

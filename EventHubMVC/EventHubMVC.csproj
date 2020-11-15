@@ -177,10 +177,12 @@
     <Content Include="Images\Public.jpg" />
     <Content Include="Images\Sports.jpg" />
     <Content Include="Images\upEvent.jpg" />
+    <Content Include="Scripts\browseEventsScript.js" />
     <Content Include="Scripts\browseScript.js" />
     <Content Include="Scripts\IndexSetup.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\searchEventScript.js" />
     <Content Include="UploadedEventImages\Default.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
