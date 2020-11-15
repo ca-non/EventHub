@@ -8,69 +8,69 @@
 <div id="browseEvents-wrapper">
     <div id="sidebar">
         <ul>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("All", "BrowseEvent", new { browseType = "All"}, new AjaxOptions()
                                            {
                                                HttpMethod = "GET",
                                                UpdateTargetId = "browseEvents-content",
                                                InsertionMode = InsertionMode.Replace
-                                           })
+                                           }, new { @id = "all-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Festivals", "BrowseEvent", new { browseType = "Festivals" }, new AjaxOptions()
                                            {
                                                HttpMethod = "GET",
                                                UpdateTargetId = "browseEvents-content",
                                                InsertionMode = InsertionMode.Replace
-                                           })
+                                           }, new { @id = "festivals-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Food & Drink", "BrowseEvent", new { browseType = "Food & Drink" }, new AjaxOptions()
                                             {
                                                 HttpMethod = "GET",
                                                 UpdateTargetId = "browseEvents-content",
                                                 InsertionMode = InsertionMode.Replace
-                                            })
+                                            }, new { @id = "foodanddrink-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Art", "BrowseEvent", new { browseType = "Art" }, new AjaxOptions()
                                             {
                                                 HttpMethod = "GET",
                                                 UpdateTargetId = "browseEvents-content",
                                                 InsertionMode = InsertionMode.Replace
-                                            })
+                                            }, new { @id = "art-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Movies", "BrowseEvent", new { browseType = "Movies" }, new AjaxOptions()
                                             {
                                                 HttpMethod = "GET",
                                                 UpdateTargetId = "browseEvents-content",
                                                 InsertionMode = InsertionMode.Replace
-                                            })
+                                            }, new { @id = "movies-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Gaming", "BrowseEvent", new { browseType = "Gaming" }, new AjaxOptions()
                                             {
                                                 HttpMethod = "GET",
                                                 UpdateTargetId = "browseEvents-content",
                                                 InsertionMode = InsertionMode.Replace
-                                            })
+                                            }, new { @id = "gaming-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Sports", "BrowseEvent", new { browseType = "Sports" }, new AjaxOptions()
                                             {
                                                 HttpMethod = "GET",
                                                 UpdateTargetId = "browseEvents-content",
                                                 InsertionMode = InsertionMode.Replace
-                                            })
+                                            }, new { @id = "sports-link-browse" })
             </li>
-            <li>
+            <li class="sidebar-li">
                 @Ajax.ActionLink("Public", "BrowseEvent", new { browseType = "Public" }, new AjaxOptions()
                                             {
                                                 HttpMethod = "GET",
                                                 UpdateTargetId = "browseEvents-content",
                                                 InsertionMode = InsertionMode.Replace
-                                            })
+                                            }, new { @id = "public-link-browse" })
             </li>
         </ul>
         <div>
@@ -104,33 +104,36 @@
     <div id="browseEvents-content">
         @if(Model != null)
         {
-            <div class="individualCatergory-body-b">
-                @foreach (EventInfo eachEvent in Model)
-                {
-                    <div class="each-event-b">
-                        <div class="event-pic-b">
-                            <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
-                        </div>
-                        <div class="event-dateTime-wrapper-b">
-                            <p id="eachEvent-title-b">
-                                @eachEvent.Title
-                            </p>
-                            <p id="eachEvent-dateTime-b">
-                                @eachEvent.Date
-                            </p>
-                            <p id="eachEvent-dateTime-b">
-                                @eachEvent.Time
-                            </p>
-                        </div>
-                        <div class="event-description-b">
-                            <p id="eachEventdescription-b">
-                                @eachEvent.Description
-                            </p>
-                        </div>
+        <div class="individualCatergory-body-b">
+            @foreach (EventInfo eachEvent in Model)
+            {
+            <a href="#" onclick="location.href='@Url.Action("Event", "Home", new { Id = eachEvent.Id })'">
+                <div class="each-event-b">
+                    <div class="event-pic-b">
+                        <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
                     </div>
-                }
-            </div>
+                    <div class="event-dateTime-wrapper-b">
+                        <p id="eachEvent-title-b">
+                            @eachEvent.Title
+                        </p>
+                        <p id="eachEvent-dateTime-b">
+                            @eachEvent.Date
+                        </p>
+                        <p id="eachEvent-dateTime-b">
+                            @eachEvent.Time
+                        </p>
+                    </div>
+                    <div class="event-description-b">
+                        <p id="eachEventdescription-b">
+                            @eachEvent.Description
+                        </p>
+                    </div>
+                </div>
+              </a>
+             }
+        </div>
         }
     </div>
 </div>
 
+<script src="~/Scripts/browseScript.js"></script>

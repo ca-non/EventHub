@@ -104,7 +104,7 @@ namespace EventHubMVC.Controllers
 
         public PartialViewResult Art()
         {
-            ViewBag.ImageName = " Art.jpg";
+            ViewBag.ImageName = "Art.jpg";
 
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
             List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Art");
@@ -134,7 +134,7 @@ namespace EventHubMVC.Controllers
 
         public PartialViewResult Sports()
         {
-            ViewBag.ImageName = " Sports.jpg";
+            ViewBag.ImageName = "Sports.jpg";
 
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
             List<EventCard> eventCards = eventBusinessLogic.getAllEvents("Sports");

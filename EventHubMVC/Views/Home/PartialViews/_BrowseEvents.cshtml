@@ -4,27 +4,29 @@
 <div class="individualCatergory-body-b">
     @foreach (EventInfo eachEvent in Model)
     {
-    <div class="each-event-b">
-        <div class="event-pic-b">
-            <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
+    <a href="#" onclick="location.href='@Url.Action("Event", "Home", new { Id = eachEvent.Id })'">
+        <div class="each-event-b">
+            <div class="event-pic-b">
+                <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
+            </div>
+            <div class="event-dateTime-wrapper-b">
+                <p id="eachEvent-title-b">
+                    @eachEvent.Title
+                </p>
+                <p id="eachEvent-dateTime-b">
+                    @eachEvent.Date
+                </p>
+                <p id="eachEvent-dateTime-b">
+                    @eachEvent.Time
+                </p>
+            </div>
+            <div class="event-description-b">
+                <p id="eachEventdescription-b">
+                    @eachEvent.Description
+                </p>
+            </div>
         </div>
-        <div class="event-dateTime-wrapper-b">
-            <p id="eachEvent-title-b">
-                @eachEvent.Title
-            </p>
-            <p id="eachEvent-dateTime-b">
-                @eachEvent.Date
-            </p>
-            <p id="eachEvent-dateTime-b">
-                @eachEvent.Time
-            </p>
-        </div>
-        <div class="event-description-b">
-            <p id="eachEventdescription-b">
-                @eachEvent.Description
-            </p>
-        </div>
+     </a>
+     }
     </div>
-    }
-</div>
 

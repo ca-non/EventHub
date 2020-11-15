@@ -43,7 +43,7 @@ namespace EventBusinessLayer
             }
             else
             {
-                Regex pattern = new Regex(@"^[a-zA-Z]+$");
+                Regex pattern = new Regex(@"^[a-zA-Z\s]+$");
                 if(!pattern.IsMatch(newEvent.Location))
                 {
                     mState.AddModelError("Location", "Invalid character/s entered for location");
@@ -366,6 +366,8 @@ namespace EventBusinessLayer
                         {
                             EventInfo eventInfo = new EventInfo();
 
+                            eventInfo.Id = (int)rdr["Id"];
+
                             eventInfo.Title = rdr["Title"].ToString();
 
                             char[] separators = { '/', ' ' };
@@ -453,6 +455,8 @@ namespace EventBusinessLayer
                     {
                         EventInfo eventInfo = new EventInfo();
 
+                        eventInfo.Id = (int)rdr["Id"];
+
                         eventInfo.Title = rdr["Title"].ToString();
 
                         char[] separators = { '/', ' ' };
@@ -511,6 +515,8 @@ namespace EventBusinessLayer
                             while(rdr.Read())
                             {
                                 EventInfo eventInfo = new EventInfo();
+
+                                eventInfo.Id = (int)rdr["Id"];
 
                                 eventInfo.Title = rdr["Title"].ToString();
 
@@ -792,6 +798,8 @@ namespace EventBusinessLayer
                 {
                     while(rdr.Read())
                     {
+                        eventInfo.Id = (int)rdr["Id"];
+
                         eventInfo.Title = rdr["Title"].ToString();
 
                         char[] separators = { '/', ' ' };

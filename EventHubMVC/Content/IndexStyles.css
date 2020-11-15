@@ -169,6 +169,12 @@ nav {
     border-bottom: 2px solid dodgerblue;
 }
 
+.linked-clicked {
+    color: dodgerblue !important;
+    font-weight: 800 !important;
+    border-bottom: 2px solid dodgerblue !important;
+}
+
 .individualCatergory-header{
     padding-top: 50px;
     margin: auto;
@@ -176,12 +182,15 @@ nav {
     
 }
 
+.center-image{
+    width: 60%;
+    margin: auto;
+}
 /* individual-catergories 33% 33% 33%*/
-
 .individualCatergory-body {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-gap: 10px;
+    grid-gap: 15px;
     margin-top: 50px;
 }
 
@@ -190,12 +199,21 @@ nav {
     min-height: 300px;
     max-width: 300px;
     max-height: 300px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+.each-event:hover {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.each-event > a{
+    text-decoration: none;
 }
 
 .event-pic {
-    min-width:300px;
+    min-width: 300px;
     min-height: 150px;
     max-width: 300px;
     max-height: 150px;
@@ -207,14 +225,30 @@ nav {
     max-width: 300px;
     max-height: 150px;
     text-align: center;
+    margin-top: 10px;
 }
 
+#eachEvent-dateTime-d {
+    font-weight: 600;
+    color: orangered;
+}
+
+#eachEvent-dateTime-t {
+    font-weight: 700;
+    color: orangered;
+}
+
+#eachEvent-title-E {
+    font-size: 16px;
+    font-weight: 900;
+    color: black;
+}
 
 /* Footer */
-.footerTag{
+.footerTag {
     margin-top: 62px;
     padding: 25px;
-    padding-top:40px;
+    padding-top: 40px;
     background-color: rgb(248, 248, 248);
     display: flex;
     justify-content: center;

@@ -4,7 +4,9 @@
     margin-right: 60%;
 }
 
-
+.inVal-description > textarea{
+    white-space: pre-line;
+}
 .create-modal-container {
     padding: 25px;
     margin-top: 5vh;

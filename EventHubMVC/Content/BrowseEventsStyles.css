@@ -35,9 +35,20 @@ li > a {
     font-size: 14px;
     padding: 5px;
     flex:1;
+    outline: none;
 }
 
-li > a:hover {
+.browseLink-Clicked:focus {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.browseLink-style {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.sidebar-li > a:hover {
     color: deepskyblue;
     background-color: white;
 }
@@ -125,19 +136,36 @@ li > a:focus {
 }
 
 /*Events*/
+.individualCatergory-body-b > a{
+    text-decoration: none;
+    color: black;
+}
 
-.each-event-b{
+.each-event-b {
     display: flex;
     height: 25vh;
     padding: 10px;
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 0px 1px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
 }
 
-.event-pic-b{
-    flex:2;
+.each-event-b:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.event-pic-b {
+    flex: 2;
+}
+
+.event-pic-b> img {
+    height: 75%;
 }
 
 .event-dateTime-wrapper-b {
     flex: 2;
+    padding: 10px;
+    padding-top: 1px;
+    padding-left: 25px;
 }
 
 .event-description-b {
@@ -146,6 +174,8 @@ li > a:focus {
     text-overflow: ellipsis;
     padding-left: 30px;
     letter-spacing: 1px;
+    font-size: 14px;
+    padding-bottom: 40px;
 }
 
 #eachEvent-dateTime-b {

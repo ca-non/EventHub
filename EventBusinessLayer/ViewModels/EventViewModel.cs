@@ -17,7 +17,7 @@ namespace EventBusinessLayer.ViewModels
         public string Catergories { get; set; }
 
         [Required(ErrorMessage = "Location cannot be empty")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Invalid character/s entered for location")]
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Invalid character/s entered for location")]
         public string Location { get; set; }
 
         [Required(ErrorMessage = "Time cannot be empty")]

@@ -27,7 +27,7 @@
                         @Html.EditorFor(model => model.Date, new { htmlAttributes = new { placeholder = "Date" } })
                     </div>
                     <div>@Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })</div>
-                    <div class="inputPassword inValues">
+                    <div class="inputPassword inValues inVal-description">
                         @Html.TextAreaFor(model => model.Description, 10, 100, new { placeholder = "Event description" })
                     </div>
                     <div>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })</div>

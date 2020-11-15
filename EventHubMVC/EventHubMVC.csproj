@@ -143,6 +143,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -165,11 +166,18 @@
     </Content>
     <Content Include="Images\Aboutbackground.jpg" />
     <Content Include="Images\All.jpg" />
-    <Content Include="Images\art.jpg" />
+    <Content Include="Images\Art.jpg" />
     <Content Include="Images\favicon.ico" />
+    <Content Include="Images\Festivals.jpg" />
+    <Content Include="Images\FoodAndDrink.jpg" />
+    <Content Include="Images\Gaming.jpg" />
     <Content Include="Images\jumbo.jpg" />
+    <Content Include="Images\Movies.jpg" />
     <Content Include="Images\NoResult.jpg" />
+    <Content Include="Images\Public.jpg" />
+    <Content Include="Images\Sports.jpg" />
     <Content Include="Images\upEvent.jpg" />
+    <Content Include="Scripts\browseScript.js" />
     <Content Include="Scripts\IndexSetup.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -308,6 +316,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Events\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

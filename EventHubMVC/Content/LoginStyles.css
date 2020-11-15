@@ -44,7 +44,7 @@ body {
     padding-bottom: 5px;
 }
 #back-Home {
-    padding-top: 15px;
+    padding-top: 50px;
     text-align: center;
 }
 
@@ -92,7 +92,12 @@ body {
     padding: 25px;  
 }
 
-.form-group{
+#register-header-link > a{
+    color: black;
+    font-weight: 800;
+}
+
+.form-group {
     padding: 5px;
 }
 

@@ -2,7 +2,9 @@
 @using EventBusinessLayer
 
 <div class="individualCatergory-header">
-    <img src="~/Images/@ViewBag.ImageName" alt="Page Jumbotron" width="100%" height="250">
+    <div class="center-image">
+        <img src="~/Images/@ViewBag.ImageName" alt="Page Jumbotron" width="420" height="250">
+    </div>
 </div>
 <div class="individualCatergory-body">
     @foreach (EventCard eachEvent in Model)
@@ -13,13 +15,15 @@
                     <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
                 </div>
                 <div class="event-description">
-                    <p id="eachEvent-dateTime">
-                        @eachEvent.Date   @eachEvent.Time
+                    <p id="eachEvent-dateTime-d">
+                        @eachEvent.Date
+                    <p id="eachEvent-dateTime-t">
+                        @eachEvent.Time
                     </p>
-                    <p id="eachEvent-title">
+                    <p id="eachEvent-title-E">
                         @eachEvent.Title
                     </p>
-                 </div>
+                </div>
              </a>
         </div>
     }
