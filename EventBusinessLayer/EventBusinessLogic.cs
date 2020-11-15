@@ -506,7 +506,7 @@ namespace EventBusinessLayer
                         cmd.Parameters.AddWithValue("@fromDate", eventDT.FromDate);
                         cmd.Parameters.AddWithValue("@toDate", eventDT.ToDate);
                         cmd.Parameters.AddWithValue("@fromTime", eventDT.FromTime);
-                        cmd.Parameters.AddWithValue("@toTime", eventDT.ToDate);
+                        cmd.Parameters.AddWithValue("@toTime", eventDT.ToTime);
 
                         con.Open();
 
@@ -600,7 +600,7 @@ namespace EventBusinessLayer
                         SqlCommand cmd = new SqlCommand("spFTtime", con);
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@fromTime", eventDT.FromTime);
-                        cmd.Parameters.AddWithValue("@toTime", eventDT.ToDate);
+                        cmd.Parameters.AddWithValue("@toTime", eventDT.ToTime);
 
                         con.Open();
 
@@ -823,6 +823,8 @@ namespace EventBusinessLayer
                         eventInfo.Image = imageRaw.Substring(index + 1);
 
                         eventInfo.Description = rdr["EventDescription"].ToString();
+
+                        eventInfo.Location = rdr["EventLocation"].ToString();
                     }
                 }
             }

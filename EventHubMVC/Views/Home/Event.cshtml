@@ -6,13 +6,16 @@
     <div id="center">
         <div id="event-top-I">
             <div id="event-top-Image">
-                <img href="~/UploadedImages/@Model.Image" />
+                <img src="~/UploadedEventImages/@Model.Image"/>
             </div>
             <div id="event-top-TitleDate">
                 <p>@Model.Title</p>
                 <div id="event-DateTime-I">
                     <p>@Model.Date</p>
                     <p>@Model.Time</p>
+                </div>
+                <div id="event-location">
+                    <p>@Model.Location</p>
                 </div>
             </div>
         </div>

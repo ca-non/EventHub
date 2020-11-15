@@ -15,7 +15,8 @@
 
 #event-top-Image > img {
     height: 300px;
-    width: 400px;
+    width: 500px;
+    padding-left: 50px;
 }
 
 
@@ -43,4 +44,13 @@
 #event-content-I{
     margin-top: 30px;
     letter-spacing: 1px;
+    padding: 50px;
+    font-size: 14px;
+}
+
+#event-location > p {
+    padding-top: 50px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 800;
 }

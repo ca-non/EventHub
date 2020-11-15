@@ -1,4 +1,18 @@
-﻿// Styles for the event links
+﻿function setupFunc() {
+    const allLinkBrowse = document.getElementById('all-link-browse');
+    if (allLinkBrowse != null) {
+        allLinkBrowse.click();
+        allLinkBrowse.focus();
+        allLinkBrowse.classList.add("browseLink-Clicked");
+    }
+
+}
+
+
+//setupFunc();
+
+
+// Styles for the event links
 const all_l = document.getElementById('all-link-browse');
 const festivals_l = document.getElementById('festivals-link-browse');
 const foodanddrink_l = document.getElementById('foodanddrink-link-browse');

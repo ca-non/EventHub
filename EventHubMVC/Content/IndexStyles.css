@@ -271,3 +271,196 @@ nav {
     justify-content: center;
 
 }
+
+
+#browseEvents-wrapper {
+    margin-top: 5vh;
+}
+
+
+#browseEvents-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sidebar {
+    background-color: rgb(248, 248, 248);
+    width: 22%;
+    justify-content: center;
+    margin-left: 1%;
+    padding: 10px;
+    height: 55vh;
+    margin-bottom: 13vh;
+    margin-right: 8%;
+}
+
+    #sidebar > ul {
+        list-style: none;
+    }
+
+li {
+    display: flex;
+}
+
+    li > a {
+        color: black;
+        text-decoration: none;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 5px;
+        flex: 1;
+        outline: none;
+    }
+
+.browseLink-Clicked:focus {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.browseLink-style {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.sidebar-li > a:hover {
+    color: deepskyblue;
+    background-color: white;
+}
+
+li > a:focus {
+    color: dodgerblue;
+}
+
+
+#browseEvents-content {
+    width: 74%;
+    justify-content: center;
+    margin-right: 2%;
+}
+
+#divider {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#sd {
+    padding: 5px;
+}
+
+    #sd > p {
+        font-size: 14px;
+        color: gray;
+    }
+
+#browse-time {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+    #browse-time > p {
+        color: black;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    #browse-time > label {
+        font-size: 14px;
+    }
+
+#browse-date {
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+    #browse-date > p {
+        color: black;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    #browse-date > label {
+        font-size: 14px;
+    }
+
+#submit-be {
+    margin-top: 20px;
+}
+
+    #submit-be > input {
+        padding: 5px;
+        outline: none;
+        border-radius: 8px;
+        border: 0;
+        padding-right: 8px;
+        padding-left: 8px;
+        cursor: pointer;
+    }
+
+        #submit-be > input:hover {
+            background-color: #cce5ff;
+        }
+
+        #submit-be > input:focus {
+            background-color: #cce5ff;
+        }
+
+.footerTag {
+    padding-bottom: 28px;
+}
+
+/*Events*/
+.individualCatergory-body-b > a {
+    text-decoration: none;
+    color: black;
+}
+
+.each-event-b {
+    display: flex;
+    height: 25vh;
+    padding: 10px;
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 0px 1px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+    .each-event-b:hover {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+
+.event-pic-b {
+    flex: 2;
+}
+
+    .event-pic-b > img {
+        height: 75%;
+    }
+
+.event-dateTime-wrapper-b {
+    flex: 2;
+    padding: 10px;
+    padding-top: 1px;
+    padding-left: 25px;
+}
+
+.event-description-b {
+    flex: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 30px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding-bottom: 40px;
+}
+
+#eachEvent-dateTime-b {
+    padding-top: 5px;
+    letter-spacing: 1px;
+}
+
+#eachEvent-title-b {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+}

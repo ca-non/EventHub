@@ -31,6 +31,7 @@ namespace EventHubMVC.Controllers
 
         public ActionResult BrowseEvents()
         {
+            ViewBag.RunScript = true;
             ViewBag.Title = "Browse events";
 
             return View();
@@ -38,6 +39,7 @@ namespace EventHubMVC.Controllers
 
         public PartialViewResult BrowseEvent(string browseType)
         {
+            ViewBag.RunScript = false;
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
             List<EventInfo> eventInfoList = eventBusinessLogic.getBrowseResults(browseType);
 
@@ -48,13 +50,14 @@ namespace EventHubMVC.Controllers
         public ActionResult BrowseEvents(FormCollection formCollection)
         {
             ViewBag.Title = "Browse events";
+            ViewBag.RunScript = false;
 
             EventDT eventDT = new EventDT();
             eventDT.FromTime = formCollection["from-time"];
             eventDT.ToTime = formCollection["to-time"];
             eventDT.FromDate = formCollection["from-date"];
-            eventDT.ToDate = formCollection["from-date"];
-
+            eventDT.ToDate = formCollection["to-date"];
+            
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
             List<EventInfo> eventInfoList = eventBusinessLogic.getDTResults(eventDT);
 
