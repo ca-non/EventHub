@@ -175,6 +175,11 @@ namespace EventHubMVC.Controllers
         [ActionName("Login")]
         public ActionResult Login_get(string flash)
         {
+            if (Session["LoggedIn"].ToString() == "Logged")
+            {
+                return RedirectToAction("Index");
+            }
+
             ViewBag.Title = "EventHub - Login";
             ViewBag.Flash = flash;
 
@@ -185,6 +190,11 @@ namespace EventHubMVC.Controllers
         [ActionName("Login")]
         public ActionResult Login_post(string flash, FormCollection formCollection)
         {
+            if (Session["LoggedIn"].ToString() == "Logged")
+            {
+                return RedirectToAction("Index");
+            }
+
             ViewBag.Title = "EventHub - Login";
             ViewBag.Flash = flash;
 
@@ -207,11 +217,13 @@ namespace EventHubMVC.Controllers
                     {
                         Session["Email"] = currentUser.UsernameEmail;
                         Session["Username"] = false;
+                        Session["LoggedIn"] = "Logged";
                     }
                     else
                     {
                         Session["Username"] = currentUser.UsernameEmail;
                         Session["Email"] = false;
+                        Session["LoggedIn"] = "Logged";
                     }
                     
                     return RedirectToAction("Index");
@@ -225,6 +237,10 @@ namespace EventHubMVC.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            if (Session["LoggedIn"].ToString() == "Logged")
+            {
+                return RedirectToAction("Index");
+            }
             ViewBag.Title = "EventHub - Register";
 
             return View();
@@ -234,6 +250,10 @@ namespace EventHubMVC.Controllers
         [HttpPost]
         public ActionResult Register(FormCollection formCollection)
         {
+            if (Session["LoggedIn"].ToString() == "Logged")
+            {
+                return RedirectToAction("Index");
+            }
             ViewBag.Title = "EventHub - Register";
 
             RegisterViewModel newUser = new RegisterViewModel();
@@ -264,6 +284,11 @@ namespace EventHubMVC.Controllers
         [HttpGet]
         public ActionResult Logout()
         {
+            if (Session["LoggedIn"].ToString() != "Logged")
+            {
+                return RedirectToAction("ForbiddenError", "Error");
+            }
+
             ViewBag.Title = "EventHub - Logout";
 
             Session.Clear();
@@ -275,6 +300,11 @@ namespace EventHubMVC.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["LoggedIn"].ToString() != "Logged")
+            {
+                return RedirectToAction("Index");
+            }
+
             ViewBag.Title = "EventHub - Create new event";
 
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
@@ -288,6 +318,11 @@ namespace EventHubMVC.Controllers
         [HttpPost]
         public ActionResult Create(EventViewModel newEvent)
         {
+            if (Session["LoggedIn"].ToString() != "Logged")
+            {
+                return RedirectToAction("Index");
+            }
+
             ViewBag.Title = "EventHub - Create new event";
             EventBusinessLogic eventBusinessLogic = new EventBusinessLogic();
 

@@ -12,5 +12,10 @@ namespace EventHubMVC.Controllers
         {
             return View();
         }
+
+        public ActionResult ForbiddenError()
+        {
+            return View();
+        }
     }
 }

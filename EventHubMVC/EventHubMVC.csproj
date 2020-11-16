@@ -154,10 +154,10 @@
     <Content Include="Content\AboutStyles.css" />
     <Content Include="Content\BrowseEventsStyles.css" />
     <Content Include="Content\CreateStyles.css" />
+    <Content Include="Content\ErrorStyles.css" />
     <Content Include="Content\EventStyles.css" />
     <Content Include="Content\IndexStyles.css" />
     <Content Include="Content\LoginStyles.css" />
-    <Content Include="Content\NotFoundStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
     <Content Include="Content\SearchEventsStyles.css" />
     <Content Include="Global.asax" />
@@ -316,6 +316,7 @@
     <Content Include="Views\Home\PartialViews\_BrowseEvents.cshtml" />
     <Content Include="Views\Home\Event.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Shared\ForbiddenError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,9 +20,10 @@
     <nav>
         <div class="logo">
             <h4>@Html.ActionLink("EventHub", "Index", "Home")</h4>
-            <form>
+            @using (Html.BeginForm("SearchEvents", "Home", FormMethod.Get))
+            {
                 <input id="searchBox" name="searchBox" placeholder="Search events">
-            </form>
+            }
         </div>
         <ul class="nav-links">
             <li>@Html.ActionLink("About Us", "About", "Home")</li>
