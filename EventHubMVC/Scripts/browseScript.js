@@ -95,7 +95,6 @@ function public_lClickHandler() {
 }
 
 if (all_l != null && festivals_l != null && foodanddrink_l != null && art_l != null && movies_l != null && gaming_l != null && sports_l != null && public_l != null) {
-    console.log("babee");
     all_l.addEventListener('click', all_lClickHandler);
     festivals_l.addEventListener('click', festivals_lClickHandler);
     foodanddrink_l.addEventListener('click', foodanddrink_lClickHandler);

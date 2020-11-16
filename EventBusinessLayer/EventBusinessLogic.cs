@@ -255,7 +255,13 @@ namespace EventBusinessLayer
                         {
                             postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                         }
-                        eventCard.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        int simpleTime = int.Parse(timeBits[0]);
+                        if (int.Parse(timeBits[0]) != 12)
+                        {
+                            simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime-12 : simpleTime;
+                        }
+                        eventCard.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                         string imageRaw = rdr["EventImage"].ToString();
                         int index = imageRaw.LastIndexOf('\\');
@@ -329,7 +335,13 @@ namespace EventBusinessLayer
                         {
                             postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                         }
-                        eventCard.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        int simpleTime = int.Parse(timeBits[0]);
+                        if (int.Parse(timeBits[0]) != 12)
+                        {
+                            simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                        }
+                        eventCard.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                         string imageRaw = rdr["EventImage"].ToString();
                         int index = imageRaw.LastIndexOf('\\');
@@ -384,7 +396,13 @@ namespace EventBusinessLayer
                             {
                                 postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                             }
-                            eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                            int simpleTime = int.Parse(timeBits[0]);
+                            if (int.Parse(timeBits[0]) != 12)
+                            {
+                                simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                            }
+                            eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                             string imageRaw = rdr["EventImage"].ToString();
                             int index = imageRaw.LastIndexOf('\\');
@@ -475,7 +493,13 @@ namespace EventBusinessLayer
                         {
                             postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                         }
-                        eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        int simpleTime = int.Parse(timeBits[0]);
+                        if (int.Parse(timeBits[0]) != 12)
+                        {
+                            simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                        }
+                        eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                         string imageRaw = rdr["EventImage"].ToString();
                         int index = imageRaw.LastIndexOf('\\');
@@ -536,7 +560,12 @@ namespace EventBusinessLayer
                                 {
                                     postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                                 }
-                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+                                int simpleTime = int.Parse(timeBits[0]);
+                                if (int.Parse(timeBits[0]) != 12)
+                                {
+                                    simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                                }
+                                eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                                 string imageRaw = rdr["EventImage"].ToString();
                                 int index = imageRaw.LastIndexOf('\\');
@@ -584,7 +613,12 @@ namespace EventBusinessLayer
                                 {
                                     postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                                 }
-                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+                                int simpleTime = int.Parse(timeBits[0]);
+                                if (int.Parse(timeBits[0]) != 12)
+                                {
+                                    simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                                }
+                                eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                                 string imageRaw = rdr["EventImage"].ToString();
                                 int index = imageRaw.LastIndexOf('\\');
@@ -632,7 +666,12 @@ namespace EventBusinessLayer
                                 {
                                     postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                                 }
-                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+                                int simpleTime = int.Parse(timeBits[0]);
+                                if (int.Parse(timeBits[0]) != 12)
+                                {
+                                    simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                                }
+                                eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                                 string imageRaw = rdr["EventImage"].ToString();
                                 int index = imageRaw.LastIndexOf('\\');
@@ -680,7 +719,12 @@ namespace EventBusinessLayer
                                 {
                                     postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                                 }
-                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+                                int simpleTime = int.Parse(timeBits[0]);
+                                if (int.Parse(timeBits[0]) != 12)
+                                {
+                                    simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                                }
+                                eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                                 string imageRaw = rdr["EventImage"].ToString();
                                 int index = imageRaw.LastIndexOf('\\');
@@ -727,7 +771,12 @@ namespace EventBusinessLayer
                                 {
                                     postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                                 }
-                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+                                int simpleTime = int.Parse(timeBits[0]);
+                                if (int.Parse(timeBits[0]) != 12)
+                                {
+                                    simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                                }
+                                eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                                 string imageRaw = rdr["EventImage"].ToString();
                                 int index = imageRaw.LastIndexOf('\\');
@@ -774,7 +823,12 @@ namespace EventBusinessLayer
                                 {
                                     postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                                 }
-                                eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+                                int simpleTime = int.Parse(timeBits[0]);
+                                if (int.Parse(timeBits[0]) != 12)
+                                {
+                                    simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                                }
+                                eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                                 string imageRaw = rdr["EventImage"].ToString();
                                 int index = imageRaw.LastIndexOf('\\');
@@ -828,7 +882,13 @@ namespace EventBusinessLayer
                         {
                             postFix = (int.Parse(timeBits[0]) / 11) == 0 ? "AM" : "PM";
                         }
-                        eventInfo.Time = timeBits[0] + "." + timeBits[1] + " " + postFix;
+
+                        int simpleTime = int.Parse(timeBits[0]);
+                        if (int.Parse(timeBits[0]) != 12)
+                        {
+                            simpleTime = (int.Parse(timeBits[0]) / 12) == 1 ? simpleTime - 12 : simpleTime;
+                        }
+                        eventInfo.Time = simpleTime + "." + timeBits[1] + " " + postFix;
 
                         string imageRaw = rdr["EventImage"].ToString();
                         int index = imageRaw.LastIndexOf('\\');

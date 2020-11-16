@@ -20,11 +20,6 @@ function shortText() {
             }
         }
     }
-
-    if (descriptionPara == null) {
-        console.log("hel-lo-lo");
-    }
-
 }
 
 
