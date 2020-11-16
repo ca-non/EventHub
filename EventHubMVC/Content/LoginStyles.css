@@ -22,7 +22,7 @@ body {
 }
 
 .flash-banner {
-    margin-top: 5vh;
+    margin-top: 2vh;
     text-align: center;
     letter-spacing: 1px;
     background-color: #cce5ff;
@@ -38,13 +38,13 @@ body {
 
 #fb-3 {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     color: dodgerblue;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 #back-Home {
-    padding-top: 50px;
+    padding-top: 20px;
     text-align: center;
 }
 

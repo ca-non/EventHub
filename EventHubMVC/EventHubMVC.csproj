@@ -148,6 +148,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactVM.cs" />
+    <Compile Include="Models\MainAppLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +166,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Aboutbackground.jpg" />
+    <Content Include="Images\AboutUs.jpg" />
     <Content Include="Images\All.jpg" />
     <Content Include="Images\Art.jpg" />
     <Content Include="Images\ErrorImages\Forbidden.jpg" />
@@ -321,7 +323,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Error\" />
     <Folder Include="Views\Events\" />
     <Folder Include="Views\User\" />

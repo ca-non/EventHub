@@ -7,6 +7,7 @@ using UserBusinessLayer;
 using UserBusinessLayer.ViewModels;
 using EventBusinessLayer;
 using EventBusinessLayer.ViewModels;
+using EventHubMVC.Models;
 
 namespace EventHubMVC.Controllers
 {
@@ -169,6 +170,24 @@ namespace EventHubMVC.Controllers
             ViewBag.Title = "EventHub - About";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AboutFeedback(ContactVM contactVM)
+        {
+            ViewBag.Title = "EventHub - About";
+
+            if (ModelState.IsValid)
+            {
+                MainAppLogic mainAppLogic = new MainAppLogic();
+                mainAppLogic.addFeedback(contactVM);
+            }
+            else
+            {
+                return View("About", contactVM);
+            }
+
+            return RedirectToAction("About");
         }
 
         [HttpGet]

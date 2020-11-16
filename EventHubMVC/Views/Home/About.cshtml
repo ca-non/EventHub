@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EventHubMVC.Models.ContactVM
+@{
     ViewBag.Title = "About";
     Layout = null;
 }
@@ -39,21 +40,55 @@
             }
         </ul>
     </nav>
-    <div id="about-image"><img src="~/Images/Aboutbackground.jpg" alt="Background"></div>
+    <div id="about-content">
+        <div id="about-image"><img src="~/Images/AboutUs.jpg" alt="Background"></div>
+
+    </div>
     <div class="about-container">
         <h4>About us</h4>
-        <p>EventHub is a local self-service ticketing platform for live experiences that allows anyone to create, share, find and attend events that fuel their passions and enrich their lives. 
-        From music festivals, marathons, conferences, community rallies, and fundraisers, to gaming competitions and air guitar contests. Our mission is to bring the world together through live experiences.</p>
+        <p>
+            EventHub is a local self-service ticketing platform for live experiences that allows anyone to create, share, find and attend events that fuel their passions and enrich their lives.
+            From music festivals, marathons, conferences, community rallies, and fundraisers, to gaming competitions and air guitar contests. Our mission is to bring the world together through live experiences.
+        </p>
     </div>
+    <div id="contact-form">
+        <h4>Contact Us</h4>
+        @using (Html.BeginForm("AboutFeedback", "Home", FormMethod.Post))
+        {
+            <div id="contact-modal">
+                @Html.AntiForgeryToken()
+                <div class="email">
+                    @Html.EditorFor(model => model.Email, new { HtmlAttributes = new { @placeholder = "Email" } })
+                </div>
+                <div class="error-msg">@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</div>
+                <div class="Subject">
+                    @Html.EditorFor(model => model.Subject, new { HtmlAttributes = new { @placeholder = "What's this about" } })
+                </div>
+                <div class="error-msg">@Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })</div>
+                <div class="Message">
+                    @Html.TextAreaFor(model => model.Message, 10, 92, new { placeholder = "Go ahead, we're listening..." })
+                </div>
+                <div class="error-msg">@Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })</div>
+                <div class="submit-container">
+                    <button type="submit" class="submitButton">Submit</button>
+                </div>
+            </div>
+
+        }
+
+    </div>
+
     <footer class="footerTag">
         <div>
             <p>&copy;Copyright 2020 by EventHub. All Rights Reserved.</p>
             <div class="logo-footer">
-                <h4>The Nav</h4>
+                <h4>EVENTHUB</h4>
             </div>
         </div>
     </footer>
-
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
 
 </html>
