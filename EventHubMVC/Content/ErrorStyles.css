@@ -1,0 +1,22 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.error-wrapper {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+#getBack-button > a {
+    text-decoration: none;
+    color: white;
+    background-color: #2ec1ac;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}

@@ -143,9 +143,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,6 +157,7 @@
     <Content Include="Content\EventStyles.css" />
     <Content Include="Content\IndexStyles.css" />
     <Content Include="Content\LoginStyles.css" />
+    <Content Include="Content\NotFoundStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
     <Content Include="Content\SearchEventsStyles.css" />
     <Content Include="Global.asax" />
@@ -167,6 +167,8 @@
     <Content Include="Images\Aboutbackground.jpg" />
     <Content Include="Images\All.jpg" />
     <Content Include="Images\Art.jpg" />
+    <Content Include="Images\ErrorImages\NotFound.jpg" />
+    <Content Include="Images\ErrorImages\ServerError.jpg" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\Festivals.jpg" />
     <Content Include="Images\FoodAndDrink.jpg" />
@@ -293,7 +295,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -314,10 +315,12 @@
     <Content Include="Views\Home\BrowseEvents.cshtml" />
     <Content Include="Views\Home\PartialViews\_BrowseEvents.cshtml" />
     <Content Include="Views\Home\Event.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Error\" />
     <Folder Include="Views\Events\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
