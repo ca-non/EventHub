@@ -44,6 +44,7 @@ textarea {
     outline: none;
     margin-top: 10px;
     letter-spacing: 1px;
+    resize: vertical;
 }
 
 textarea:focus {
