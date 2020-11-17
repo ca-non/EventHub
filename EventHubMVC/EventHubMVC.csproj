@@ -206,6 +206,7 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Properties\PublishProfiles\eventhub2020 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -288,6 +289,44 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_103311548_199607744421_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_109355769_112506421457_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_110302457_139692261491_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_111861967_18078962023_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_112269425_457357223846_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_113290197_474782695233_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_113303897_231516610820_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_113758041_165108071443_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_113760737_473125922441_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_114130355_79284397855_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_114295751_218062284213_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_114539619_172125007556_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_114567099_634066613_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_114674037_1262800154_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_114904441_149962066403_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115053341_10566190187_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115168111_440872885596_1_original.png" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115332745_462708341286_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115831085_118373259849_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115865865_12602525447_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115967629_191345501758_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_115975241_205309345190_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116043171_314444080911_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116086913_147052556408_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116219805_73959077741_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116436207_338489482689_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116685003_458345807830_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116695063_11626152345_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116841349_183485678449_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116841929_257987465749_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116908645_9953660283_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116954693_149962066403_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_116965065_487706680255_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117119359_64437069015_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117210051_231895989007_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117231355_432844702964_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117604397_147052556408_1_original.jpg" />
+    <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117664189_491574446415_1_original.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -320,6 +359,7 @@
     <Content Include="Views\Home\Event.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\ForbiddenError.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

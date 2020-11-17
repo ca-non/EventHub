@@ -1,0 +1,49 @@
+﻿@model EventBusinessLayer.ViewModels.EventViewModel
+<link rel="stylesheet" href="~/Content/CreateStyles.css"/>
+
+<div class="create-container">
+    <div class="create-modal">
+        <div class="create-modal-container">
+            <p class="create-modal-header">Create an event</p>
+            <div class="form-group">
+                <form action="/Home/Create" method="post" enctype="multipart/form-data">
+                    <div class="inputUsername inValues">
+                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @placeholder = "Title" } })
+                    </div>
+                    <div> @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })</div>
+                    <div class="inputUsername inValues">
+                        @Html.DropDownList("Catergories", "Select Catergory")
+                    </div>
+                    <div> @Html.ValidationMessageFor(model => model.Catergories, "", new { @class = "text-danger" })</div>
+                    <div class="inputEmail inValues">
+                        @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @placeholder = "Location" } })
+                    </div>
+                    <div> @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })</div>
+                    <div class="inputEmail inValues">
+                        @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @placeholder = "Start time" } })
+                    </div>
+                    <div>@Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })</div>
+                    <div class="inputPassword inValues">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { placeholder = "Date" } })
+                    </div>
+                    <div>@Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })</div>
+                    <div class="inputPassword inValues inVal-description">
+                        @Html.TextAreaFor(model => model.Description, 10, 100, new { placeholder = "Event description" })
+                    </div>
+                    <div>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })</div>
+                    <div class="banner-label inValues">@Html.Label("Banner image")</div>
+                    <div id="inValues-image">
+                        @Html.TextBox("Image", "", new { type = "file" }) <br />
+                    </div>
+
+                    <div class="submit-container">
+                        <button type="submit" class="submitButton">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

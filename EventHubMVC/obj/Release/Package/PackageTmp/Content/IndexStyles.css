@@ -1,0 +1,466 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: white;
+    padding-left: 5%;
+}
+
+#create-Button:hover {
+    background-color: #4BA6FF;
+}
+
+#create-Button {
+    background-color: #cce5ff;
+    padding: 5px;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#create-Button > a {
+    padding: 5px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 26px;
+}
+
+.logo form{
+    margin-left: 100px;
+}
+
+#searchBox{
+    padding: 12px;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    width: 300px;
+    background-color: rgb(248, 248, 248);
+}
+
+#searchBox:focus {
+    border: 2px solid ;
+    border-color: dodgerblue;
+}
+.onSearchClick {
+    border: 2px solid ;
+    border-color: green ;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+    .nav-links li {
+        list-style: none;
+        padding: 5px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+.nav-links a{
+    color: black;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/* page body */
+.pageBody{
+    padding-right: 18%;
+    padding-left: 18%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jumbotron{
+    display: inline-block;
+    position:relative;
+}
+
+#jumbotronButton {
+    position: absolute;
+    bottom: 40%;
+    left: 15%;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 14px;
+    background-color: #50BFE6;
+    letter-spacing: 1px;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+    #jumbotronButton:hover {
+        background-color: #4BA6FF;
+    }
+
+#jumbotronButton:active{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+/*event caterogries*/
+ .eventCaterogy-header{
+    padding: 10px;
+    padding-left: 0;
+    padding-top: 50px;
+    font-weight: 900;
+    font-size: 15px;
+    letter-spacing: 2px;
+    
+ }
+
+ .catergory-links{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 40%;
+ }
+
+ .catergory-links a{
+    color: rgb(173, 170, 170);
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.all-link-style:focus {
+    color: dodgerblue;
+    font-weight: 800;
+    border-bottom: 2px solid dodgerblue;
+    outline: none;
+}
+
+.catergory-links a:hover {
+    color: black;
+}
+
+.catergory-links a:focus {
+    color: dodgerblue;
+    font-weight: 800;
+    border-bottom: 2px solid dodgerblue;
+}
+
+.linked-clicked {
+    color: dodgerblue !important;
+    font-weight: 800 !important;
+    border-bottom: 2px solid dodgerblue !important;
+}
+
+.individualCatergory-header{
+    padding-top: 50px;
+    margin: auto;
+    width: 60%;
+    
+}
+
+.center-image{
+    width: 60%;
+    margin: auto;
+}
+/* individual-catergories 33% 33% 33%*/
+.individualCatergory-body {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 15px;
+    margin-top: 50px;
+}
+
+.each-event {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.each-event:hover {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.each-event > a{
+    text-decoration: none;
+}
+
+.event-pic {
+    min-width: 300px;
+    min-height: 150px;
+    max-width: 300px;
+    max-height: 150px;
+}
+
+.event-description {
+    min-width: 300px;
+    min-height: 150px;
+    max-width: 300px;
+    max-height: 150px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#eachEvent-dateTime-d {
+    font-weight: 600;
+    color: orangered;
+}
+
+#eachEvent-dateTime-t {
+    font-weight: 700;
+    color: orangered;
+}
+
+#eachEvent-title-E {
+    font-size: 16px;
+    font-weight: 900;
+    color: black;
+}
+
+/* Footer */
+.footerTag {
+    margin-top: 62px;
+    padding: 25px;
+    padding-top: 40px;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    justify-content: center;
+}
+
+.footerTag p {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.logo-footer {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+#browseEvents-wrapper {
+    margin-top: 5vh;
+}
+
+
+#browseEvents-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sidebar {
+    background-color: rgb(248, 248, 248);
+    width: 22%;
+    justify-content: center;
+    margin-left: 1%;
+    padding: 10px;
+    height: 55vh;
+    margin-bottom: 13vh;
+    margin-right: 8%;
+}
+
+    #sidebar > ul {
+        list-style: none;
+    }
+
+li {
+    display: flex;
+}
+
+    li > a {
+        color: black;
+        text-decoration: none;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 5px;
+        flex: 1;
+        outline: none;
+    }
+
+.browseLink-Clicked:focus {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.browseLink-style {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.sidebar-li > a:hover {
+    color: deepskyblue;
+    background-color: white;
+}
+
+li > a:focus {
+    color: dodgerblue;
+}
+
+
+#browseEvents-content {
+    width: 74%;
+    justify-content: center;
+    margin-right: 2%;
+}
+
+#divider {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#sd {
+    padding: 5px;
+}
+
+    #sd > p {
+        font-size: 14px;
+        color: gray;
+    }
+
+#browse-time {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+    #browse-time > p {
+        color: black;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    #browse-time > label {
+        font-size: 14px;
+    }
+
+#browse-date {
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+    #browse-date > p {
+        color: black;
+        letter-spacing: 1px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    #browse-date > label {
+        font-size: 14px;
+    }
+
+#submit-be {
+    margin-top: 20px;
+}
+
+    #submit-be > input {
+        padding: 5px;
+        outline: none;
+        border-radius: 8px;
+        border: 0;
+        padding-right: 8px;
+        padding-left: 8px;
+        cursor: pointer;
+    }
+
+        #submit-be > input:hover {
+            background-color: #cce5ff;
+        }
+
+        #submit-be > input:focus {
+            background-color: #cce5ff;
+        }
+
+.footerTag {
+    padding-bottom: 28px;
+}
+
+/*Events*/
+.individualCatergory-body-b > a {
+    text-decoration: none;
+    color: black;
+}
+
+.each-event-b {
+    display: flex;
+    height: 25vh;
+    padding: 10px;
+    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 0px 1px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+    .each-event-b:hover {
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+
+.event-pic-b {
+    flex: 2;
+}
+
+    .event-pic-b > img {
+        height: 75%;
+    }
+
+.event-dateTime-wrapper-b {
+    flex: 2;
+    padding: 10px;
+    padding-top: 1px;
+    padding-left: 25px;
+}
+
+.event-description-b {
+    flex: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 30px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding-bottom: 40px;
+}
+
+#eachEvent-dateTime-b {
+    padding-top: 5px;
+    letter-spacing: 1px;
+}
+
+#eachEvent-title-b {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,263 @@
+﻿*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: white;
+    padding-left: 5%;
+}
+
+#create-Button:hover {
+    background-color: #4BA6FF;
+}
+
+#create-Button {
+    background-color: #cce5ff;
+    padding: 5px;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#create-Button > a {
+    padding: 5px;
+}
+
+.logo {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+    .logo a {
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 26px;
+    }
+
+.logo form {
+    margin-left: 100px;
+}
+
+#searchBox {
+    padding: 12px;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    width: 300px;
+    background-color: rgb(248, 248, 248);
+}
+
+#searchBox:focus {
+    border: 2px solid;
+    border-color: dodgerblue;
+}
+
+.onSearchClick {
+    border: 2px solid;
+    border-color: green;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+    .nav-links li {
+        list-style: none;
+        align-items: center;
+        padding: 5px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+
+/*content*/
+#about-content{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.about-container {
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    /*background-color: rgb(248, 248, 248);*/
+    /*box-shadow: 0 4px 8px 0 rgba(0,90,156, 0.2), 0 6px 20px 0 rgba(0,90,156, 0.19);*/
+    border-radius: 8px;
+    top: 50px;
+    width: 80%;
+    left: 175px;
+}
+
+.about-container h4 {
+    letter-spacing: 2px;
+    margin-bottom: 5vh;
+    font-size: 20px;
+}
+
+.about-container p {
+    letter-spacing: 1px;
+}
+
+
+.footerTag {
+    margin-top: 62px;
+    padding: 20px;
+    padding-top: 40px;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+    .footerTag p {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+.logo-footer {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+}
+
+/*image*/
+#about-image > img{
+    width: 40vw;
+    height:50vh;
+}
+
+/*Contact Us*/
+#contact-form {
+    width: 30%;
+    margin: auto;
+    text-align: center;
+}
+
+#contact-form h4 {
+    letter-spacing: 2px;
+    margin-bottom: 5vh;
+    font-size: 20px;
+}
+
+.email > input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 12px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.email > input:focus {
+    border: 2px solid;
+    border-color: #2ec1ac;
+    outline: none;
+}
+
+.Subject > input {
+    width: 100%;
+    margin-top: 1px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.Subject > input:focus {
+    border: 2px solid;
+    border-color: #2ec1ac;
+    outline: none;
+}
+
+.Message {
+    margin-top: 1px;
+}
+
+.Message > textarea {
+    padding: 5px;
+    padding-top: 10px;
+    padding-right: 0px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.Message > textarea:focus {
+    border: 2px solid;
+    border-color: #2ec1ac;
+    outline: none;
+}
+
+.submit-container > button {
+    margin-top: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: #2ec1ac;
+    font-weight: 900;
+    font-size: 14px;
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+
+
+.submit-container > button:focus {
+    background-color: #2dcfb8;
+    box-shadow: 0 4px 8px 0 rgba(0,90,156, 0.2), 0 6px 20px 0 rgba(0,90,156, 0.19);
+}
+
+.text-danger {
+    color: red;
+    font-size: 12px;
+    padding: 10px;
+    padding-left: 0;
+}
+
+.error-msg{
+    text-align: left;
+}

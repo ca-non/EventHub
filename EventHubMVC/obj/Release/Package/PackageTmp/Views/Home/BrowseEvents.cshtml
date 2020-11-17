@@ -1,0 +1,209 @@
+﻿@model IEnumerable<EventBusinessLayer.EventInfo>
+@using EventBusinessLayer
+
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/BrowseEventsStyles.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h4>@Html.ActionLink("EventHub", "Index", "Home")</h4>
+            @using (Html.BeginForm("SearchEvents", "Home", FormMethod.Get))
+            {
+                <input id="searchBox" name="searchBox" placeholder="Search events">
+            }
+        </div>
+        <ul class="nav-links">
+            <li>@Html.ActionLink("About Us", "About", "Home")</li>
+            @if (Session["Username"] == null)
+            {
+                <li id="create-Button">@Html.ActionLink("Create an account", "Register", "Home")</li>
+                <li>@Html.ActionLink("Login", "Login", "Home")</li>
+            }
+            else
+            {
+                <li id="create-Button">@Html.ActionLink("Create an event", "Create", "Home")</li>
+                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+            }
+        </ul>
+    </nav>
+
+    <div id="browseEvents-wrapper">
+        <div id="sidebar">
+            <ul>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("All", "BrowseEvent", new { browseType = "All"}, new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "browseEvents-content",
+                                                   InsertionMode = InsertionMode.Replace
+                                               }, new { @id = "all-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Festivals", "BrowseEvent", new { browseType = "Festivals" }, new AjaxOptions()
+                                               {
+                                                   HttpMethod = "GET",
+                                                   UpdateTargetId = "browseEvents-content",
+                                                   InsertionMode = InsertionMode.Replace
+                                               }, new { @id = "festivals-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Food & Drink", "BrowseEvent", new { browseType = "Food & Drink" }, new AjaxOptions()
+                                                {
+                                                    HttpMethod = "GET",
+                                                    UpdateTargetId = "browseEvents-content",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }, new { @id = "foodanddrink-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Art", "BrowseEvent", new { browseType = "Art" }, new AjaxOptions()
+                                                {
+                                                    HttpMethod = "GET",
+                                                    UpdateTargetId = "browseEvents-content",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }, new { @id = "art-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Movies", "BrowseEvent", new { browseType = "Movies" }, new AjaxOptions()
+                                                {
+                                                    HttpMethod = "GET",
+                                                    UpdateTargetId = "browseEvents-content",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }, new { @id = "movies-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Gaming", "BrowseEvent", new { browseType = "Gaming" }, new AjaxOptions()
+                                                {
+                                                    HttpMethod = "GET",
+                                                    UpdateTargetId = "browseEvents-content",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }, new { @id = "gaming-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Sports", "BrowseEvent", new { browseType = "Sports" }, new AjaxOptions()
+                                                {
+                                                    HttpMethod = "GET",
+                                                    UpdateTargetId = "browseEvents-content",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }, new { @id = "sports-link-browse" })
+                </li>
+                <li class="sidebar-li">
+                    @Ajax.ActionLink("Public", "BrowseEvent", new { browseType = "Public" }, new AjaxOptions()
+                                                {
+                                                    HttpMethod = "GET",
+                                                    UpdateTargetId = "browseEvents-content",
+                                                    InsertionMode = InsertionMode.Replace
+                                                }, new { @id = "public-link-browse" })
+                </li>
+            </ul>
+            <div>
+                <hr id="divider" />
+                @using (Html.BeginForm("BrowseEvents", "Home", FormMethod.Post))
+                {
+                    <div id="sd">
+                        <p>Advanced Search</p>
+                        <div id="browse-time">
+                            <p>Event Time</p>
+                            <label for="appt">From </label>
+                            <input type="time" id="from-time" name="from-time">
+                            <label for="appt">To </label>
+                            <input type="time" id="to-time" name="to-time">
+                        </div>
+                        <div id="browse-date">
+                            <p>Event Date</p>
+                            <label for="birthday">From </label>
+                            <input type="date" id="from-date" name="from-date">
+                            <label for="birthday">To </label>
+                            <input type="date" id="to-date" name="to-date">
+                        </div>
+                        <div id="submit-be">
+                            <input type="submit" value="submit" />
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+        <div id="browseEvents-content">
+            @if (Model != null && ViewBag.Results == "Results")
+            {
+                <div class="individualCatergory-body-b">
+                    @foreach (EventInfo eachEvent in Model)
+                    {
+                        <a href="#" onclick="location.href='@Url.Action("Event", "Home", new { Id = eachEvent.Id })'">
+                            <div class="each-event-b">
+                                <div class="event-pic-b">
+                                    <img src="~/UploadedEventImages/@eachEvent.Image" alt="Page Jumbotron" width="300" height="150">
+                                </div>
+                                <div class="event-dateTime-wrapper-b">
+                                    <p id="eachEvent-title-b">
+                                        @eachEvent.Title
+                                    </p>
+                                    <p id="eachEvent-dateTime-b">
+                                        @eachEvent.Date
+                                    </p>
+                                    <p id="eachEvent-dateTime-b">
+                                        @eachEvent.Time
+                                    </p>
+                                </div>
+                                <div class="event-description-b">
+                                    <p id="eachEventdescription-b" class="browseEventParagraph">
+                                        @eachEvent.Description
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            }
+            else if (ViewBag.Results == "NoResults")
+            {
+                <div class="individualCatergory-body-b">
+                    <p id="no-result">
+                        <img src="~/Images/NoResult.jpg"/>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="~/Scripts/browseScript.js"></script>
+    @if (ViewBag.RunScript == true)
+    {
+        <script>
+            setupFunc();
+        </script>
+
+    }
+    <script src="~/Scripts/browseEventsScript.js"></script>
+    <script>
+        shortText();
+    </script>
+
+
+    <footer class="footerTag">
+        <div>
+            <p>&copy;Copyright 2020 by EventHub. All Rights Reserved.</p>
+            <div class="logo-footer">
+                <h4>EVENTHUB</h4>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

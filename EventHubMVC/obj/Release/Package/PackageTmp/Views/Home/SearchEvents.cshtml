@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EventBusinessLayer.EventInfo>
+@using EventBusinessLayer
+<link rel="stylesheet" href="~/Content/SearchEventsStyles.css"/>
+
+<div class="search-wrapper">
+    <h3 id="page-title">Search Results...</h3>
+    @if(Model.Count() == 0)
+    {
+        <p id="no-result">
+            <img src="~/Images/NoResult.jpg"/>
+        </p>
+    }
+    else
+    {
+        foreach(EventInfo eachevent in Model)
+        {
+        <a class="search-event-link" href="#" onclick="location.href='@Url.Action("Event", "Home", new { Id = eachevent.Id })'">
+            <div class="event-wrapper-search">
+                <div class="event-image-search">
+                    <img src="~/UploadedEventImages/@eachevent.Image">
+                </div>
+                <div class="event-title-search">
+                    <p>@eachevent.Title</p>
+                    <p class="search-event-title">@eachevent.Date</p>
+                    <p>@eachevent.Time</p>
+                    <p>@eachevent.Location</p>
+                </div>
+                <div class="event-description-search">
+                    <p class="description-para">@eachevent.Description</p>
+                </div>
+            </div>
+          </a>
+        }
+    }
+
+</div>
+<script src="~/Scripts/searchEventScript.js"></script>

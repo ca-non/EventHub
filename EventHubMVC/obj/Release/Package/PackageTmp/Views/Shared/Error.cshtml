@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "NotFound";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+    <link rel="stylesheet" href="~/Content/ErrorStyles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="error-wrapper">
+        <img src="~/Images/ErrorImages/ServerError.jpg" />
+        <div id="getBack-button">
+            @Html.ActionLink("Go back to site", "Index", "Home")
+        </div>
+    </div>
+</body>
+</html>

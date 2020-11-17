@@ -1,0 +1,27 @@
+﻿@model EventBusinessLayer.EventInfo
+
+<link rel="stylesheet" href="~/Content/EventStyles.css"/>
+
+<div id="event-wrapper-I">
+    <div id="center">
+        <div id="event-top-I">
+            <div id="event-top-Image">
+                <img src="~/UploadedEventImages/@Model.Image"/>
+            </div>
+            <div id="event-top-TitleDate">
+                <p>@Model.Title</p>
+                <div id="event-DateTime-I">
+                    <p>@Model.Date</p>
+                    <p>@Model.Time</p>
+                </div>
+                <div id="event-location">
+                    <p>@Model.Location</p>
+                </div>
+            </div>
+        </div>
+        <div id="event-content-I">
+            <p>@Model.Description</p>
+        </div>
+    </div>
+</div>
+
