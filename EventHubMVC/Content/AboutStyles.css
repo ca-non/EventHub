@@ -220,6 +220,7 @@ nav {
     padding-right: 0px;
     border: 1px solid gray;
     border-radius: 4px;
+    max-width: 571px;
 }
 
 .Message > textarea:focus {

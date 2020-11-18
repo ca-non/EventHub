@@ -153,6 +153,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutFeedbackStyles.css" />
     <Content Include="Content\AboutStyles.css" />
     <Content Include="Content\BrowseEventsStyles.css" />
     <Content Include="Content\CreateStyles.css" />
@@ -360,6 +361,7 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\ForbiddenError.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\AboutFeedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

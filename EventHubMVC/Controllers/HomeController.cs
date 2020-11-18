@@ -187,7 +187,22 @@ namespace EventHubMVC.Controllers
                 return View("About", contactVM);
             }
 
-            return RedirectToAction("About");
+            return RedirectToAction("AboutFeedback", new { feedback = true });
+        }
+
+
+        public ActionResult AboutFeedback(bool? feedback)
+        {
+            ViewBag.Title = "EventHub - About";
+
+            if(feedback != null && feedback == true)
+            {
+                return View();
+            }
+            else
+            { 
+                return RedirectToAction("About");
+            }
         }
 
         [HttpGet]
@@ -297,6 +312,18 @@ namespace EventHubMVC.Controllers
                 
             }
             return View(newUser);
+        }
+
+        public JsonResult IsUsernameAvailable(string UserName)
+        {
+            UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
+            return Json(!userBusinessLogic.checkUsernameRegister(UserName), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsEmailAvailable(string Email)
+        {
+            UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
+            return Json(!userBusinessLogic.checkEmailRegister(Email), JsonRequestBehavior.AllowGet);
         }
 
 

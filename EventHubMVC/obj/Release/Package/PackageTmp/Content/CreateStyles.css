@@ -45,6 +45,7 @@ textarea {
     margin-top: 10px;
     letter-spacing: 1px;
     resize: vertical;
+    max-width: 575px;
 }
 
 textarea:focus {

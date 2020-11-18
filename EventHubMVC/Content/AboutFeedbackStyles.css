@@ -1,0 +1,144 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 8vh;
+    background-color: white;
+    padding-left: 5%;
+}
+
+#create-Button:hover {
+    background-color: #4BA6FF;
+}
+
+#create-Button {
+    background-color: #cce5ff;
+    padding: 5px;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+    #create-Button > a {
+        padding: 5px;
+    }
+
+.logo {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+    .logo a {
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 26px;
+    }
+
+    .logo form {
+        margin-left: 100px;
+    }
+
+#searchBox {
+    padding: 12px;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    width: 300px;
+    background-color: rgb(248, 248, 248);
+}
+
+    #searchBox:focus {
+        border: 2px solid;
+        border-color: dodgerblue;
+    }
+
+.onSearchClick {
+    border: 2px solid;
+    border-color: green;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+    .nav-links li {
+        list-style: none;
+        align-items: center;
+        padding: 5px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .nav-links a {
+        color: black;
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+
+
+
+.footerTag {
+    margin-top: 62px;
+    padding: 20px;
+    padding-top: 40px;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+    .footerTag p {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+.logo-footer {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+}
+
+/*content*/
+.about-feedbody{
+    width: 50%;
+    margin: auto;
+    height: 80vh;
+}
+
+.about-feedbody > p{
+    letter-spacing: 1px;
+    font-weight: 800;
+    font-size: 20px;
+}

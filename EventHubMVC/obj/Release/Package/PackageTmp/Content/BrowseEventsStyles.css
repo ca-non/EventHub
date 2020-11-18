@@ -145,7 +145,7 @@ li > a:focus {
     display: flex;
     height: 25vh;
     padding: 10px;
-    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 0px 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1), -1px -1px 0 rgba(0, 0, 0, 0.1);
     margin-top: 5px;
 }
 
@@ -390,7 +390,7 @@ nav {
     min-height: 300px;
     max-width: 300px;
     max-height: 300px;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1), -1px -1px 0 rgba(0, 0, 0, 0.1);
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -619,7 +619,7 @@ li > a:focus {
     display: flex;
     height: 25vh;
     padding: 10px;
-    box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.1), 0 0px 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1), -1px -1px 0 rgba(0, 0, 0, 0.1);
     margin-top: 5px;
 }
 

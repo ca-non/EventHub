@@ -17,7 +17,7 @@ namespace UserBusinessLayer
         public bool addNewUser(RegisterViewModel newUser, ModelStateDictionary mState)
         {
             bool modelStateFlag = true;
-           
+
 
             // Username server validation
             if (String.IsNullOrEmpty(newUser.UserName))
@@ -38,7 +38,11 @@ namespace UserBusinessLayer
                     mState.AddModelError("UserName", "Username can contain only letters, numbers and _ ");
                     modelStateFlag = false;
                 }
-
+                else if(checkUsernameRegister(newUser.UserName))
+                {
+                    mState.AddModelError("UserName", "Username already taken");
+                    modelStateFlag = false;
+                }
             }
 
             // Password server validation
@@ -89,6 +93,11 @@ namespace UserBusinessLayer
                 if (!pattern.IsMatch(newUser.Email))
                 {
                     mState.AddModelError("Email", "Invalid email entered");
+                    modelStateFlag = false;
+                }
+                else if (checkUsernameRegister(newUser.Email))
+                {
+                    mState.AddModelError("Email", "Email already taken");
                     modelStateFlag = false;
                 }
             }
@@ -278,6 +287,78 @@ namespace UserBusinessLayer
 
 
             return modelStateFlag;
+        }
+
+        public bool checkUsernameRegister(string Username)
+        {
+            bool taken = false;
+
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+            int count;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spCheckUsernameRegister", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserName", Username);
+
+                SqlParameter outParameter = new SqlParameter();
+                outParameter.ParameterName = "@Count";
+                outParameter.SqlDbType = SqlDbType.Int;
+                outParameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outParameter);
+
+                con.Open();
+                cmd.ExecuteScalar();
+
+                count = (int)outParameter.Value;
+            }
+
+            if (count > 0)
+            {
+                taken = true;
+                return taken;
+            }
+            else
+            {
+                return taken;
+            }
+        }
+
+        public bool checkEmailRegister(string Email)
+        {
+            bool taken = false;
+
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+            int count;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spCheckEmailRegister", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Email", Email);
+
+                SqlParameter outParameter = new SqlParameter();
+                outParameter.ParameterName = "@Count";
+                outParameter.SqlDbType = SqlDbType.Int;
+                outParameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outParameter);
+
+                con.Open();
+                cmd.ExecuteScalar();
+
+                count = (int)outParameter.Value;
+            }
+
+            if (count > 0)
+            {
+                taken = true;
+                return taken;
+            }
+            else
+            {
+                return taken;
+            }
         }
     }
 }
