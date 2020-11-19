@@ -9,6 +9,8 @@ using System.Data.SqlClient;
 using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using UserBusinessLayer.ViewModels;
+using System.Net.Mail;
+using System.Collections.Specialized;
 
 namespace UserBusinessLayer
 {
@@ -359,6 +361,68 @@ namespace UserBusinessLayer
             {
                 return taken;
             }
+        }
+
+        public bool resetPassword(ForgotPasswordViewModel forgotPasswordData)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+            bool returnFlag = false;
+
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spResetPassword", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Email", forgotPasswordData.Email);
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while(rdr.Read())
+                    {
+                        if(Convert.ToBoolean(rdr["ReturnCode"]))
+                        {
+                            UserUtility userUtility = new UserUtility();
+                            userUtility.SendPasswordResetEmail(forgotPasswordData.Email, rdr["Username"].ToString(), rdr["UniqueId"].ToString());
+                            returnFlag = true;
+                        }
+                    }
+                }
+            }
+
+            return returnFlag;
+        }
+
+
+    }
+
+    public class UserUtility
+    {
+        public void SendPasswordResetEmail(string ToEmail, String Username, String UniqueId)
+        {
+            MailMessage mailMessage = new MailMessage(ConfigurationManager.AppSettings["Username"], ToEmail);
+
+            StringBuilder emailBody = new StringBuilder();
+            emailBody.Append("Dear " + Username + ",<br/><br/>");
+            emailBody.Append("Please click on the following");
+            emailBody.Append("<br/>");
+            emailBody.Append("http://localhost:50193/Home/ResetPassword?uid=" + UniqueId);
+            emailBody.Append("<br/><br/>");
+            emailBody.Append("<b>EVENTHUB</b>");
+
+            mailMessage.IsBodyHtml = true;
+
+            mailMessage.Body = emailBody.ToString();
+            mailMessage.Subject = "Reset Your Password";
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+            smtpClient.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = ConfigurationManager.AppSettings["Username"],
+                Password = ConfigurationManager.AppSettings["Password"]
+            };
+
+            smtpClient.EnableSsl = true;
+            smtpClient.Send(mailMessage);
         }
     }
 }

@@ -271,6 +271,7 @@ namespace EventHubMVC.Controllers
         public ActionResult ForgotPassword(string resetFlash)
         {
             ViewBag.Title = "EventHub - Reset Password";
+            ViewBag.resetFlash = resetFlash;
 
             return View();
         }
@@ -282,13 +283,21 @@ namespace EventHubMVC.Controllers
 
             if(ModelState.IsValid)
             {
-                //send email
+                UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
+                if(userBusinessLogic.resetPassword(resetData))
+                {
+                    return RedirectToAction("ForgotPassword", new { resetFlash = "Reset" });
+                }
+                else
+                {
+                    return RedirectToAction("ForgotPassword", new { resetFlash = "ResetFalse" });
+                } 
             }
 
-            return RedirectToAction("ForgotPassword", new { resetFlash = "Reset" });
+            return View();
         }
 
-        public ActionResult ResetPassword()
+        public ActionResult ResetPassword(string uid)
         {
             ViewBag.Title = "EventHub - Reset Password";
 
