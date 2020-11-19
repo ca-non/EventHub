@@ -15,6 +15,7 @@ namespace UserBusinessLayer.ViewModels
         public string UsernameEmail { get; set; }
 
         [Required(ErrorMessage = "Password cannot be empty")]
+        [DataType(DataType.Password)]
         public string Passwd { get; set; }
 
         public bool RememberMe { get; set; }

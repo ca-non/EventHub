@@ -159,6 +159,7 @@
     <Content Include="Content\CreateStyles.css" />
     <Content Include="Content\ErrorStyles.css" />
     <Content Include="Content\EventStyles.css" />
+    <Content Include="Content\ForgotPasswordStyles.css" />
     <Content Include="Content\IndexStyles.css" />
     <Content Include="Content\LoginStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
@@ -362,6 +363,7 @@
     <Content Include="Views\Shared\ForbiddenError.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\AboutFeedback.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

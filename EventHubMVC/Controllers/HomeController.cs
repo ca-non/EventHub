@@ -267,6 +267,34 @@ namespace EventHubMVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ForgotPassword(string resetFlash)
+        {
+            ViewBag.Title = "EventHub - Reset Password";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(ForgotPasswordViewModel resetData)
+        {
+            ViewBag.Title = "EventHub - Reset Password";
+
+            if(ModelState.IsValid)
+            {
+                //send email
+            }
+
+            return RedirectToAction("ForgotPassword", new { resetFlash = "Reset" });
+        }
+
+        public ActionResult ResetPassword()
+        {
+            ViewBag.Title = "EventHub - Reset Password";
+
+            return View();
+        }
+
 
         [HttpGet]
         public ActionResult Register()
