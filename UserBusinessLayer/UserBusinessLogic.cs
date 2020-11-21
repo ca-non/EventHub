@@ -418,6 +418,27 @@ namespace UserBusinessLayer
                 }
             }
 
+            using
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("spIsPasswordResetLinkValid", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@GUID", uid);
+
+                con.Open();
+
+                using (SqlDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        if (Convert.ToBoolean(rdr["IsValidPasswordLink"]))
+                        {
+                            return flag;
+                        }
+                    }
+                }
+            }
+
             return flag;
         }
 
