@@ -161,6 +161,7 @@
     <Content Include="Content\EventStyles.css" />
     <Content Include="Content\ForgotPasswordStyles.css" />
     <Content Include="Content\IndexStyles.css" />
+    <Content Include="Content\LinkExpiredStyles.css" />
     <Content Include="Content\LoginStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
     <Content Include="Content\SearchEventsStyles.css" />
@@ -365,6 +366,7 @@
     <Content Include="Views\Home\AboutFeedback.cshtml" />
     <Content Include="Views\Home\ForgotPassword.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Home\LinkExpired.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -301,9 +301,32 @@ namespace EventHubMVC.Controllers
         {
             ViewBag.Title = "EventHub - Reset Password";
 
+            UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
+
+            if(!userBusinessLogic.checkForResetLinkValid(uid))
+            {
+                return RedirectToAction("LinkExpired", "Home");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        
+        public ActionResult LinkExpired()
+        {
+            ViewBag.Title = "EventHub - Link Expired";
+
             return View();
         }
 
+        [HttpPost]
+        public ActionResult ResetPassword(FormCollection formCollection)
+        {
+            ViewBag.Title = "EventHub - Reset Password";
+
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Register()
