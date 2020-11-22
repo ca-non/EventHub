@@ -10,7 +10,6 @@ using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using UserBusinessLayer.ViewModels;
 using System.Net.Mail;
-using System.Collections.Specialized;
 
 namespace UserBusinessLayer
 {
@@ -418,10 +417,9 @@ namespace UserBusinessLayer
                 }
             }
 
-            using
             using (SqlConnection con = new SqlConnection(cs))
             {
-                SqlCommand cmd = new SqlCommand("spIsPasswordResetLinkValid", con);
+                SqlCommand cmd = new SqlCommand("spGetResetLinkTime", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@GUID", uid);
 
@@ -431,10 +429,13 @@ namespace UserBusinessLayer
                 {
                     while (rdr.Read())
                     {
-                        if (Convert.ToBoolean(rdr["IsValidPasswordLink"]))
-                        {
-                            return flag;
-                        }
+                        DateTime dt = Convert.ToDateTime(rdr["ResetRequestDateTime"]);
+                        DateTime dtNow = DateTime.Now;
+
+                        String difference = (dtNow - dt).TotalMinutes.ToString();
+
+                        return flag;
+
                     }
                 }
             }
