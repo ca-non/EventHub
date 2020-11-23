@@ -303,27 +303,37 @@ namespace EventHubMVC.Controllers
 
             UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
 
-            if(!userBusinessLogic.checkForResetLinkValid(uid))
-            {
-                return RedirectToAction("LinkExpired", "Home");
-            }
-            else
+            if(userBusinessLogic.checkForResetLinkValid(uid))
             {
                 return View();
             }
+            else
+            {
+                return RedirectToAction("LinkExpired", "Home");
+            }
         }
-        
-        public ActionResult LinkExpired()
+
+        [HttpPost]
+        public ActionResult ResetPassword(ResetPasswordViewModel resetPasswordVM)
         {
-            ViewBag.Title = "EventHub - Link Expired";
+            ViewBag.Title = "EventHub - Reset Password";
+
+            if(ModelState.IsValid)
+            {
+                String GUID = Request.QueryString["uid"];
+
+                UserBusinessLogic userBusinessLogic = new UserBusinessLogic();
+                userBusinessLogic.changePassword(resetPasswordVM, GUID);
+
+                return RedirectToAction("Login", new { flash = "PasswordChanged" });
+            }
 
             return View();
         }
 
-        [HttpPost]
-        public ActionResult ResetPassword(FormCollection formCollection)
+        public ActionResult LinkExpired()
         {
-            ViewBag.Title = "EventHub - Reset Password";
+            ViewBag.Title = "EventHub - Link Expired";
 
             return View();
         }

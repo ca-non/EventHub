@@ -25,6 +25,13 @@
                 <p id="fb-2"> Please login to continue </p>
             </div>
         }
+        else if (ViewBag.Flash == "PasswordChanged")
+        {
+            <div class="flash-banner">
+                <p id="fb-3">Password changed successfully.</p>
+                <p id="fb-3"> Please login to continue </p>
+            </div>
+        }
         else if (ViewBag.Flash == "LoggedOut")
         {
             <div class="flash-banner">

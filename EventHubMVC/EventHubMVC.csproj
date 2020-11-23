@@ -164,6 +164,7 @@
     <Content Include="Content\LinkExpiredStyles.css" />
     <Content Include="Content\LoginStyles.css" />
     <Content Include="Content\RegisterStyles.css" />
+    <Content Include="Content\ResetPasswordStyles.css" />
     <Content Include="Content\SearchEventsStyles.css" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -330,7 +331,9 @@
     <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117231355_432844702964_1_original.jpg" />
     <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117604397_147052556408_1_original.jpg" />
     <Content Include="UploadedEventImages\https___cdn.evbuc.com_images_117664189_491574446415_1_original.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

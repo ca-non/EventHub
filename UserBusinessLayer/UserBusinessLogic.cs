@@ -393,7 +393,12 @@ namespace UserBusinessLayer
 
         public bool checkForResetLinkValid(string uid)
         {
-            bool flag = false;
+            if(uid == null)
+            {
+                return false;
+            }
+
+            bool flag = true;
 
             string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
 
@@ -409,38 +414,59 @@ namespace UserBusinessLayer
                 {
                     while (rdr.Read())
                     {
-                        if (Convert.ToBoolean(rdr["IsValidPasswordLink"]))
+                        if (Convert.ToBoolean(rdr["IsValidPasswordLink"]) == false)
                         {
-                            return flag;
+                            flag = false;
+                        }
+                        else
+                        {
+                            using (SqlConnection con1 = new SqlConnection(cs))
+                            {
+                                SqlCommand cmd1 = new SqlCommand("spGetResetLinkTime", con1);
+                                cmd1.CommandType = CommandType.StoredProcedure;
+                                cmd1.Parameters.AddWithValue("@GUID", uid);
+
+                                con1.Open();
+
+                                using (SqlDataReader rdr1 = cmd1.ExecuteReader())
+                                {
+                                    while (rdr1.Read())
+                                    {
+                                        DateTime dt = Convert.ToDateTime(rdr1["ResetRequestDateTime"]);
+                                        DateTime dtNow = DateTime.Now;
+
+                                        String difference = (dtNow - dt).TotalMinutes.ToString();
+                                        double differenceNumeric = double.Parse(difference);
+
+                                        if(differenceNumeric >= 5.0)
+                                        {
+                                            flag = false;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
 
+            return flag;
+        }
+
+        public void changePassword(ResetPasswordViewModel resetPasswordVM, string GUID)
+        {
+            string cs = ConfigurationManager.ConnectionStrings["UserContext"].ConnectionString;
+
             using (SqlConnection con = new SqlConnection(cs))
             {
-                SqlCommand cmd = new SqlCommand("spGetResetLinkTime", con);
+                SqlCommand cmd = new SqlCommand("spchangePassword", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@GUID", uid);
+                cmd.Parameters.AddWithValue("@GUID", GUID);
+                cmd.Parameters.AddWithValue("@Password", resetPasswordVM.Newpassword);
 
                 con.Open();
-
-                using (SqlDataReader rdr = cmd.ExecuteReader())
-                {
-                    while (rdr.Read())
-                    {
-                        DateTime dt = Convert.ToDateTime(rdr["ResetRequestDateTime"]);
-                        DateTime dtNow = DateTime.Now;
-
-                        String difference = (dtNow - dt).TotalMinutes.ToString();
-
-                        return flag;
-
-                    }
-                }
+                cmd.ExecuteNonQuery();
             }
-
-            return flag;
         }
 
     }
