@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="UserContext-Web.config Connection String" description="UserContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:eventhubdatabase.database.windows.net,1433;Initial Catalog=eventhubdb;Persist Security Info=True;User ID=eventhubadmin;Password=Eagle123$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+  <parameter name="UserContext-Web.config Connection String" description="UserContext Connection String used in web.config by the application to access the database." defaultValue="Server=tcp:eventhubdatabase.database.windows.net,1433;Initial Catalog=EventHubDBProduction;Persist Security Info=False;User ID=eventhubadmin;Password=Eagle123$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\viraj\\source\\Repos\\EventHub\\EventHubMVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='UserContext']/@connectionString" />
   </parameter>
 </parameters>

@@ -25,6 +25,13 @@
                 <p id="fb-2"> Please login to continue </p>
             </div>
         }
+        else if (ViewBag.Flash == "PasswordChanged")
+        {
+            <div class="flash-banner">
+                <p id="fb-3">Password changed successfully.</p>
+                <p id="fb-3"> Please login to continue </p>
+            </div>
+        }
         else if (ViewBag.Flash == "LoggedOut")
         {
             <div class="flash-banner">
@@ -55,7 +62,7 @@
                                 <label for="remember">Remember me</label>
                             </div>
                             <div class="anchor">
-                                <a href="#">Forgot password?</a>
+                                @Html.ActionLink("Forgot password?", "ForgotPassword", "Home")
                             </div>
                         </div>
                         <div class="submit-container">

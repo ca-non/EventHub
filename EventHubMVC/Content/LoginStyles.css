@@ -175,3 +175,9 @@ a{
     justify-content: center;
     font-weight: 300;
 }
+
+@media screen and (max-width: 640px) {
+    .login-modal {
+        width: 400px;
+    }
+}

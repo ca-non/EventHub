@@ -1,0 +1,14 @@
+﻿#expired-body{
+    width: 40%;
+    margin: auto;
+    height: 72vh;
+    padding-top: 150px;
+}
+
+#expired-body-content{
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
